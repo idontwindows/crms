@@ -1,0 +1,116 @@
+
+    form#feedback-form input[type="radio"].smiley1 {
+    -webkit-appearance: none;
+    width: 90px;
+    height: 90px;
+    border: none;
+    cursor: pointer;
+    -webkit-transition: border .2s ease;
+    transition: border .2s ease;
+    -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+    margin: 0 5px;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    }
+    form#feedback-form input[type="radio"].smiley2 {
+    -webkit-appearance: none;
+    width: 90px;
+    height: 90px;
+    border: none;
+    cursor: pointer;
+    -webkit-transition: border .2s ease;
+    transition: border .2s ease;
+    -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+    margin: 0 5px;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    }
+    form#feedback-form input[type="radio"].smiley3 {
+    -webkit-appearance: none;
+    width: 90px;
+    height: 90px;
+    border: none;
+    cursor: pointer;
+    -webkit-transition: border .2s ease;
+    transition: border .2s ease;
+    -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+    margin: 0 5px;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    }
+    form#feedback-form input[type="radio"].smiley4 {
+    -webkit-appearance: none;
+    width: 90px;
+    height: 90px;
+    border: none;
+    cursor: pointer;
+    -webkit-transition: border .2s ease;
+    transition: border .2s ease;
+    -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+    margin: 0 5px;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    }
+    form#feedback-form input[type="radio"].smiley5 {
+    -webkit-appearance: none;
+    width: 90px;
+    height: 90px;
+    border: none;
+    cursor: pointer;
+    -webkit-transition: border .2s ease;
+    transition: border .2s ease;
+    -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+    margin: 0 5px;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    }
+    form#feedback-form input[type="radio"].smiley5:checked {
+        -webkit-filter: grayscale(0);
+            filter: grayscale(0);
+    }
+    form#feedback-form input[type="radio"].smiley4:checked {
+    -webkit-filter: grayscale(0);
+            filter: grayscale(0);
+    }
+    form#feedback-form input[type="radio"].smiley3:checked {
+    -webkit-filter: grayscale(0);
+            filter: grayscale(0);
+    }
+   form#feedback-form input[type="radio"].smiley2:checked {
+    -webkit-filter: grayscale(0);
+            filter: grayscale(0);
+    }
+    form#feedback-form input[type="radio"].smiley1:checked {
+    -webkit-filter: grayscale(0);
+            filter: grayscale(0);
+    }
+
+    form#feedback-form input[type="radio"]:focus {
+    outline: 0;
+    }
+    form#feedback-form input[type="radio"].smiley1 {
+    background: url("/images/angry.svg") center;
+    background-size: cover;
+    }
+    form#feedback-form input[type="radio"].smiley2 {
+    background: url("/images/sad.svg") center;
+    background-size: cover;
+    }
+    form#feedback-form input[type="radio"].smiley3 {
+    background: url("/images/neutral.svg") center;
+    background-size: cover;
+    }
+    form#feedback-form input[type="radio"].smiley4 {
+    background: url("/images/smile.svg") center;
+    background-size: cover;
+    }
+    form#feedback-form input[type="radio"].smiley5 {
+    background: url("/images/grinning.svg") center;
+    background-size: cover;
+    }
+    
