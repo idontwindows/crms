@@ -74,6 +74,13 @@ use yii\helpers\Json;
                         //'pageSummary' => true
                         //'value' => 'deliveryscoretotal'
                     ],
+                    [
+                        'attribute' => 'gap',
+                        'header' => 'GAP',
+                        'format' => ['decimal', 2],
+                        //'pageSummary' => true
+                        //'value' => 'deliveryscoretotal'
+                    ],
                     
                 ],
                 'responsive' => true,

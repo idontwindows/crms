@@ -370,6 +370,8 @@ class DefaultController extends Controller
             $importancetotalscore = $importancescore5 . ' + ' . $importancescore4 . ' + ' . $importancescore3 . ' + ' . $importancescore2 . ' + ' . $importancescore1;
 
             $is = '((' . $importancetotalscore . ')' . '/' . $totalresponse['totalresponse'] . ')';
+
+            $gap = '('.$is .'-'. $ss.')';
                                 
             $evaluationAttrib[] = Evaluationattribute::find()->select([
                 'evaluation_attribute_id',
@@ -387,7 +389,8 @@ class DefaultController extends Controller
                 'rating3' => $deliveryrating3,
                 'rating2' => $deliveryrating2,
                 'rating1' => $deliveryrating1,
-                'ss' => $ss
+                'ss' => $ss,
+                'gap' => $gap
             ])
             ->where(['business_unit_id'=>$id,'evaluation_attribute_id'=>$row['evaluation_attribute_id']])
             ->asArray()->one();
