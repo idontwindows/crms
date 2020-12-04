@@ -55,11 +55,13 @@ class FeedbackController extends Controller
             $this->layout = '@app/views/layouts/csf/main';
         }
 
+        $agencyprofile = Agencyprofile::find()->one();
+
         $counter = [];
         
         $businessUnits = Businessunit::find()->asArray()->all();
         foreach($businessUnits as $businessUnit){
-            $counter[$businessUnit['business_unit_id']] = Feedback::find()->where(['business_unit_id' => $businessUnit['business_unit_id']])->count();
+            $counter[$businessUnit['business_unit_id']] = Feedback::find()->where(['business_unit_id' => $businessUnit['business_unit_id'],'agency_id'=> $agencyprofile->agency_id])->count();
         }
         return $this->render('index', [
             //'searchModel' => $searchModel,
@@ -136,7 +138,7 @@ class FeedbackController extends Controller
                 //if($this->validateDeliveryRatings($_POST['Deliveryrating']) && $model->save()){
                 $uniq = uniqid();
                 define('UPLOAD_DIR', 'signature/');
-                $base64_string =$_POST['Feedback']['signature'];
+                $base64_string = $_POST['Feedback']['signature'];
                 $data = explode(',', $base64_string);
                 $file = UPLOAD_DIR . $uniq . '.png';
                 file_put_contents($file, base64_decode($data[1]));

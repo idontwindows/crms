@@ -257,8 +257,7 @@ class DefaultController extends Controller
         $agencyprofile = Agencyprofile::find()->one();
 
         
-        
-        //delivery rating
+        /*--------delivery rating--------*/
         $feedback = Feedback::find();
         $totalresponse = $feedback->select(['count(*) as totalresponse'])
                                   ->where(['month(feedback_date)' => $month,'year(feedback_date)' => $year,'business_unit_id' => $id,'agency_id' => $agencyprofile->agency_id])
@@ -319,7 +318,7 @@ class DefaultController extends Controller
             
             $ss = '((' . $deliveryscoretotal . ')' . '/' . $totalresponse['totalresponse']. ')'; //compute ss
 
-            //importance rating
+            /*--------importance rating--------*/
             $importancerating5 = '(SELECT COUNT(*)
                         FROM tbl_feedback AS a
                         INNER JOIN tbl_importance_rating AS b ON b.feedback_id = a.feedback_id
@@ -496,13 +495,12 @@ class DefaultController extends Controller
             'rating2' => $customerExperiencerating2['rate2'],
             'rating1' => $customerExperiencerating1['rate1'],
             'ss' => ''
-            
         ];
         
         
-        //echo '<prep>';
+        //echo '<pre>';
         //var_dump($evaluationAttrib);
-        //echo '</prep>';
+        //echo '</prep';
        
         
         $evaluatioAttribProvider = new ArrayDataProvider([
