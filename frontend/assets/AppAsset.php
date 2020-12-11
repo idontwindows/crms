@@ -14,7 +14,7 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/bootstrap3/bootstrap.css',
         'css/ionicons.min.css',
-        'css/AdminLTE.css',
+        'css/adminlte.css',
         'css/font-awesome.css',
         'css/skins/_all-skins.min.css',
         'plugins/iCheck/flat/blue.css',
