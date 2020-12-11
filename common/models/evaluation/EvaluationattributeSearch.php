@@ -6,6 +6,8 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\evaluation\Evaluationattribute;
+use common\models\User;
+use common\models\Profile;
 
 /**
  * EvaluationattributeSearch represents the model behind the search form about `common\models\evaluation\Evaluationattribute`.
@@ -41,7 +43,10 @@ class EvaluationattributeSearch extends Evaluationattribute
      */
     public function search($params)
     {
-        $query = Evaluationattribute::find();
+        //$CurrentUser = User::findOne(['user_id'=> Yii::$app->user->identity->user_id]);
+        $CurrentAgencyId = Profile::find()->where(['user_id' => Yii::$app->user->identity->user_id])->one();
+        $id = $CurrentAgencyId->agency_id;
+        $query = Evaluationattribute::find()->where(['agency_id' => $CurrentAgencyId]);
 
         // add conditions that should always apply here
 

@@ -8,6 +8,7 @@ use common\models\evaluation\EvaluationattributeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use common\models\User;
 
 /**
  * EvaluationattributeController implements the CRUD actions for Evaluationattribute model.
@@ -63,7 +64,10 @@ class EvaluationattributeController extends Controller
      */
     public function actionCreate()
     {
+        $CurrentUser= User::findOne(['user_id'=> Yii::$app->user->identity->user_id]);
+        $CurrentAgencyId = $CurrentUser->profile->agency_id;
         $model = new Evaluationattribute();
+        $model->agency_id = $CurrentAgencyId;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             

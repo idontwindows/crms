@@ -28,7 +28,8 @@
         "kartik-v/yii2-grid": "@dev",
         "kartik-v/yii2-money": "dev-master",
         "kartik-v/yii2-icons": "@dev",
-        "yii2mod/yii2-sweet-alert": "*"
+        "yii2mod/yii2-sweet-alert": "*",
+        "mdmsoft/yii2-admin": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

@@ -12,9 +12,10 @@
   <!-- Header Navbar -->
   <nav class="navbar navbar-static-top" role="navigation">
     <!-- Navbar Right Menu -->
+      <!--
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
-
+       
         <li>
           <button id="btnLogin" type="button" class="btn btn-info"><b>LOGIN</b></button>
         </li>
@@ -25,6 +26,7 @@
       </ul>
 
     </div>
+    -->
   </nav>
 </header>
 

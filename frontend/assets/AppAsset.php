@@ -13,18 +13,21 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/bootstrap3/bootstrap.css',
-        '//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css',
-        'css/AdminLTE.min.css',
+        'css/ionicons.min.css',
+        'css/AdminLTE.css',
         'css/font-awesome.css',
         'css/skins/_all-skins.min.css',
         'plugins/iCheck/flat/blue.css',
         'css/site.css',
+        'css/breadcrumbs.css',
+        'css/customLogin.css'
+     
  
     ];
     public $js = [
         'js/bootstrap/bootstrap.min.js',
-        '//code.jquery.com/ui/1.11.4/jquery-ui.min.js',
-        '//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js',
+        //'js/jquery-ui.min.js',
+        'js/evaluation/raphael-min.js',
         'plugins/sparkline/jquery.sparkline.min.js',
         'plugins/slimScroll/jquery.slimscroll.min.js',
         'plugins/fastclick/fastclick.min.js',

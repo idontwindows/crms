@@ -49,12 +49,7 @@ class Division extends \yii\db\ActiveRecord
 
     /**
      * @return \yii\db\ActiveQuery
-     */
-    public function getDivisionHeads()
-    {
-        return $this->hasMany(DivisionHead::className(), ['division_id' => 'division_id']);
-    }
-    
+     */    
     public function getBusinessunits()
     {
         return $this->hasMany(Businessunit::className(), ['division_id' => 'division_id']);

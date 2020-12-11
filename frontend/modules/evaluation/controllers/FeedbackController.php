@@ -21,13 +21,18 @@ use common\models\evaluation\Importancerating;
 use common\models\evaluation\Otherattribute;
 use common\models\evaluation\Promotion;
 use common\models\evaluation\CustomerExperience;
+use common\models\User;
 
 
 /**
  * FeedbackController implements the CRUD actions for Feedback model.
  */
+
+
 class FeedbackController extends Controller
 {
+
+
     /**
      * @inheritdoc
      */
@@ -47,7 +52,7 @@ class FeedbackController extends Controller
      * Lists all Feedback models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($agency_id)
     {
         //$searchModel = new FeedbackSearch();
         //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -55,19 +60,21 @@ class FeedbackController extends Controller
             $this->layout = '@app/views/layouts/csf/main';
         }
 
-        $agencyprofile = Agencyprofile::find()->one();
+        //$agencyprofile = Agencyprofile::find()->one();
+
 
         $counter = [];
         
         $businessUnits = Businessunit::find()->asArray()->all();
         foreach($businessUnits as $businessUnit){
-            $counter[$businessUnit['business_unit_id']] = Feedback::find()->where(['business_unit_id' => $businessUnit['business_unit_id'],'agency_id'=> $agencyprofile->agency_id])->count();
+            $counter[$businessUnit['business_unit_id']] = Feedback::find()->where(['business_unit_id' => $businessUnit['business_unit_id'],'agency_id'=> !Yii::$app->user->isGuest ? $this->getCurrentAgencyid() : $agency_id])->count();
         }
         return $this->render('index', [
             //'searchModel' => $searchModel,
             //'dataProvider' => $dataProvider,
             //'businessUnits' => $businessUnits,
             'counter' => $counter,
+            'currentAgencyId' => $this->getCurrentAgencyid()
         ]);
     }
 
@@ -88,7 +95,7 @@ class FeedbackController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate($business_unit_id)
+    public function actionCreate($business_unit_id,$agency_id)
     {
         $this->layout = 'feedback';
         $model = new Feedback();
@@ -126,11 +133,11 @@ class FeedbackController extends Controller
         //$model->business_unit_id = $_GET['business_unit_id'];
         $model->business_unit_id = $business_unit_id;
         
-        $model->agency_id = Agencyprofile::findOne(1)->agency_id;
+        $model->agency_id = $_GET['agency_id'];
         
   
         //$evaluationAttributes = Evaluationattribute::find($model->business_unit_id)->all();
-        $evaluationAttributes = Evaluationattribute::find()->where(['business_unit_id' => $business_unit_id])->all();
+        $evaluationAttributes = Evaluationattribute::find()->where(['business_unit_id' => $business_unit_id,'agency_id' => !Yii::$app->user->isGuest ? $this->getCurrentAgencyid() : $agency_id])->all();
         
         
         if ($model->load(Yii::$app->request->post()) && $modelDeliveryrating->load(Yii::$app->request->post())) {
@@ -203,6 +210,7 @@ class FeedbackController extends Controller
                 'ratingScale' => $ratingScale,
                 'ratingPromotion' => $ratingPromotion,
                 'modelCustomerExperience' => $modelCustomerExperience,
+                
             ]);
         }
     }
@@ -276,6 +284,16 @@ class FeedbackController extends Controller
         $this->layout = 'feedback';
         return $this->render('__form');
     }
+    public function getCurrentAgencyid(){
+        if(!Yii::$app->user->isGuest){
+            $CurrentUser= User::findOne(['user_id'=> Yii::$app->user->identity->user_id]);
+            return $CurrentUser->profile->agency_id;
+        }else{
+            return null;
+        }
+
+    }
+
     /*
     public function actionSignatureform()
     {

@@ -23,7 +23,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             <div class="icon">
               <i class="ion ion-person"></i>
             </div>
-            <a href="create?business_unit_id=20" class="small-box-footer">Rate unit <i class="fa fa-arrow-circle-right"></i></a>
+            <a href=<?='create?business_unit_id=20&agency_id=' . $_GET['agency_id'] ?> class="small-box-footer">Rate unit <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
 
@@ -38,7 +38,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             <div class="icon">
               <i class="ion ion-person"></i>
             </div>
-            <a href="create?business_unit_id=30" class="small-box-footer">Rate Unit <i class="fa fa-arrow-circle-right"></i></a>
+            <a href=<?='create?business_unit_id=30&agency_id=' . $_GET['agency_id']?> class="small-box-footer">Rate Unit <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
 
@@ -53,7 +53,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             <div class="icon">
               <i class="ion ion-person"></i>
             </div>
-            <a href="create?business_unit_id=40" class="small-box-footer">Rate Unit <i class="fa fa-arrow-circle-right"></i></a>
+            <a href=<?='create?business_unit_id=40&agency_id=' . $_GET['agency_id']?> class="small-box-footer">Rate Unit <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
     </div>
@@ -71,7 +71,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             <div class="icon">
               <i class="ion ion-person"></i>
             </div>
-            <a href="create?business_unit_id=50" class="small-box-footer">Rate Unit <i class="fa fa-arrow-circle-right"></i></a>
+            <a href=<?='create?business_unit_id=50&agency_id=' . $_GET['agency_id']?> class="small-box-footer">Rate Unit <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
 
@@ -86,7 +86,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             <div class="icon">
               <i class="ion ion-person"></i>
             </div>
-            <a href="create?business_unit_id=60" class="small-box-footer">Rate Unit <i class="fa fa-arrow-circle-right"></i></a>
+            <a href=<?='create?business_unit_id=60&agency_id=' . $_GET['agency_id']?> class="small-box-footer">Rate Unit <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
 
@@ -101,7 +101,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             <div class="icon">
               <i class="ion ion-person"></i>
             </div>
-            <a href="create?business_unit_id=70" class="small-box-footer">Rate Unit <i class="fa fa-arrow-circle-right"></i></a>
+            <a href=<?='create?business_unit_id=70&agency_id=' . $_GET['agency_id']?> class="small-box-footer">Rate Unit <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
     </div>
@@ -119,7 +119,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             <div class="icon">
               <i class="ion ion-person"></i>
             </div>
-            <a href="create?business_unit_id=80" class="small-box-footer">Rate Unit <i class="fa fa-arrow-circle-right"></i></a>
+            <a href=<?='create?business_unit_id=80&agency_id=' . $_GET['agency_id']?> class="small-box-footer">Rate Unit <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
 
@@ -134,7 +134,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             <div class="icon">
               <i class="ion ion-person"></i>
             </div>
-            <a href="create?business_unit_id=90" class="small-box-footer">Rate Unit <i class="fa fa-arrow-circle-right"></i></a>
+            <a href=<?='create?business_unit_id=90&agency_id=' . $_GET['agency_id']?> class="small-box-footer">Rate Unit <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
 
@@ -149,7 +149,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             <div class="icon">
               <i class="ion ion-person"></i>
             </div>
-            <a href="create?business_unit_id=100" class="small-box-footer">Rate Unit <i class="fa fa-arrow-circle-right"></i></a>
+            <a href=<?='create?business_unit_id=100&agency_id=' . $_GET['agency_id']?> class="small-box-footer">Rate Unit <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
     </div>

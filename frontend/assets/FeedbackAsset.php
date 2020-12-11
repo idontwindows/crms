@@ -35,6 +35,6 @@ class FeedbackAsset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
         //'yii\bootstrap\BootstrapAsset',
-        'rmrevin\yii\fontawesome\CdnProAssetBundle'
+        //'rmrevin\yii\fontawesome\CdnProAssetBundle'
     ];
 }

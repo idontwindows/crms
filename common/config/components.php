@@ -56,5 +56,13 @@ return [
           '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
        ),
     ],
+    'i18n' => [
+        'translations' => [
+            '*' => [ // This config applies to all translations
+                'class' => 'yii\i18n\PhpMessageSource',
+                'basePath' => '@app/messages'
+            ],
+        ],
+    ], 
 ];
  

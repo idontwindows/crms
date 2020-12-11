@@ -19,7 +19,7 @@ echo Dialog::widget();
 
 <?php $form = ActiveForm::begin([
   'id' => 'feedback-form',
-  'action' => ['create', 'business_unit_id' => $_GET['business_unit_id']],
+  'action' => ['create', 'business_unit_id' => $_GET['business_unit_id'], 'agency_id' => $_GET['agency_id']],
   //'enableAjaxValidation' => true,
   //'validationUrl' => 'validation-rul',
 ]); ?>
@@ -425,9 +425,6 @@ $(document).ready(function(){
     $('#modalTY').on('hidden.bs.modal', function (e) {
       location.replace("../feedback/index")
     });
-    $("body").on("click","#btnOk", function(){
-      location.replace("../feedback/index")
-    });
 });
 JS;
 
@@ -511,5 +508,10 @@ $this->registerJs($js, \yii\web\View::POS_READY);
 
   jQuery(document).ready(function($) {
     startCarousel();
+    $("body").on("click","#btnOk", function(){
+      var agency_id = <?php echo $_GET['agency_id'];?>;
+      var url = "../feedback/index?agency_id=" + agency_id;
+      location.replace(url)
+    });
   });
 </script>

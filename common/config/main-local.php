@@ -10,7 +10,10 @@ return [
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'modules' => [
-        'gridview' => ['class' => 'kartik\grid\Module']
+        'gridview' => ['class' => 'kartik\grid\Module'],
+        'modules' => [
+            'class' => 'common\modules\admin\Module',
+        ],
     ],
     'components' => $components
 ];

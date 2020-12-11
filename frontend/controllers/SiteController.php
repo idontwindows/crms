@@ -41,11 +41,6 @@ class SiteController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                     ],
-                    [
-                        'actions' => ['index'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
                     
                 ],
             ],
@@ -93,6 +88,8 @@ class SiteController extends Controller
     {
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
+        }else{
+            $this->layout = '@app/views/layouts/login/loginlayout';
         }
 
         $model = new LoginForm();

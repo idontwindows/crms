@@ -1,13 +1,35 @@
 <?php
+$components = array_merge(
+    require(__DIR__ . '/db.php'),
+    require(__DIR__ . '/components.php')
+);
 return [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
-    'components' => [
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
+    'modules' => [
+        'gridview' => ['class' => 'kartik\grid\Module'],
+        'gii' => [
+            'class' => 'yii\gii\Module',
+            //'allowedIPs' => ['127.0.0.1', '::1', '192.168.1.*'] // adjust this to your needs
+            'allowedIPs' => ['*'] // adjust this to your needs
+        ],
+        'message' => [
+            'class' => 'thyseus\message\Module',
+            'userModelClass' => '\common\models\system\User', // your User model. Needs to be ActiveRecord.
         ],
     ],
+    
+    'as access' => [
+        'class' => 'common\models\components\AccessControl',
+        'allowActions' => [
+            'site/*',
+            //'admin/*',
+        ]
+    ],
+    
+    'components' => $components,
+    //'defaultRoute' => '/evaluation/feedback/index',
 ];

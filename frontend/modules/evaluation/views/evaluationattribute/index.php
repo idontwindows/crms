@@ -38,7 +38,7 @@ Modal::end();
 ?>
 <div class="request-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <!--<h1><?= Html::encode($this->title) ?></h1>-->
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
@@ -88,7 +88,7 @@ Modal::end();
             'filterRowOptions' => ['class' => 'kartik-sheet-style'],
             'pjax' => true, // pjax is set to always true for this demo
             'panel' => [
-                    'heading' => '',
+                    'heading' => $this->title,
                     'type' => GridView::TYPE_PRIMARY,
                     'before'=>Html::button('New Attribute', ['value' => Url::to(['evaluationattribute/create']), 'title' => 'New Attribute', 'class' => 'btn btn-info', 'style'=>'margin-right: 6px;', 'id'=>'buttonCreateAttribute']),
                     'after'=>false,

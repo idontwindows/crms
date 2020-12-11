@@ -33,11 +33,12 @@ AppAsset::register($this);
             'header.php'
             //['directoryAsset' => $directoryAsset]
         ); ?>
-
+        
         <?= $this->render(
             'left.php'
             //['directoryAsset' => $directoryAsset]
         ); ?>
+   
 
         <?= $this->render(
             'content.php',
