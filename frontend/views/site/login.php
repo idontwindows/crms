@@ -12,7 +12,7 @@ $this->title = 'Login';
 ?>
 
 <div class="wrap">
-    <div class="header-login">CRMS</div>
+    <div class="header-login"><span class="glyphicon glyphicon-stats"></span> CRMS</div>
     <div class="site-login">
         <!-- partial:index.partial.html -->
         <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
