@@ -3,7 +3,16 @@
   margin-top: 80px;
   margin-bottom: 80px;
 }
-
+.header-login {
+  max-width: 380px;
+  margin: 0 auto;
+  background-color: #0275d8;
+  color: white;
+  font-weight: 900;
+  font-size: 3vw;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
 .site-login {
   max-width: 380px;
   padding: 15px 35px 45px;

@@ -14,6 +14,8 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use common\models\User;
+USE common\models\evaluation\Agency;
 
 
 /**
@@ -37,7 +39,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout','index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -76,7 +78,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        if(!Yii::$app->user->isGuest){
+            $CurrentUser = User::findOne(['user_id'=> Yii::$app->user->identity->user_id]);
+            $CurrenUserAgencyId = $CurrentUser->profile->agency_id;
+            //$Agency = Agency::findOne(['agency_id' => $CurrenUserAgencyId]);
+        }
+        return $this->redirect(['/evaluation/feedback/index' , 'agency_id' => $CurrenUserAgencyId]);
     }
 
     /**

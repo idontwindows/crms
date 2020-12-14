@@ -10,7 +10,9 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'Login';
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="wrap">
+    <div class="header-login">CRMS</div>
     <div class="site-login">
         <!-- partial:index.partial.html -->
         <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
