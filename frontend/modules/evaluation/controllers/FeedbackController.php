@@ -152,7 +152,7 @@ class FeedbackController extends Controller
                 $model->signature = $file;
         
 
-                if($model->save(true)){
+                if($model->save(false)){
                     foreach($_POST['Deliveryrating'] as $deliveryRating){
                         $modelDeliveryrating = new Deliveryrating();
                         $modelDeliveryrating->feedback_id = $model->feedback_id;
