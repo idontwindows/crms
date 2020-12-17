@@ -13,7 +13,7 @@ class FeedbackAsset extends AssetBundle
         'css/ionicons.min.css',
         //'css/site.css',
         'css/smiley.css',
-        'css/font-awesome.min.css',
+        'css/font-awesome.css',
         'css/star-rating.css',
         //'css/multistep.css',
         'css/vkeyboard.css',

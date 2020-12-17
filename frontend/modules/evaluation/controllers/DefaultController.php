@@ -29,7 +29,7 @@ class DefaultController extends Controller
     public function behaviors()
     {
         return [
-            /*
+            
             'access' => [
                 'class' => AccessControl::className(),
                 'only' => ['dashboard'],
@@ -42,7 +42,7 @@ class DefaultController extends Controller
                     ],
                     
                 ],
-            ],*/
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -65,7 +65,8 @@ class DefaultController extends Controller
      *
      * @return mixed
      */
-    public function actionDashboard($period = NULL, $agencyID = NULL, $businessUnitId = NULL)
+    /*
+     public function actionDashboard($period = NULL, $agencyID = NULL, $businessUnitId = NULL)
     {
         $model = new DashboardForm();
         $filter = $model->load(Yii::$app->request->post());
@@ -107,7 +108,7 @@ class DefaultController extends Controller
                 //'post' => Yii::$app->request->post(),
             ]);
         }
-    }
+    }*/
     
     public function csfResult($respondents, $businessUnitId = NULL)
     {
@@ -250,7 +251,7 @@ class DefaultController extends Controller
         return ['score' =>$nps, 'promoters' =>$promoters, 'passives' =>$passives, 'detractors' =>$detractors];
     }
 
-    public function actionReports($id,$month,$year){
+    public function actionDashboard($id = 20,$month = 0,$year = 0){
 
         /***********************************
          * AUTHOR: EDUARDO R. ZARAGOZA JR. *
@@ -259,22 +260,23 @@ class DefaultController extends Controller
          *  ---EL PASIL NO ASE DIPISIL---  *                         
          ***********************************/
 
-        $agencyprofile = Agencyprofile::find()->one();
+        //$agencyprofile = Agencyprofile::find()->one();
         
-
         if(!Yii::$app->user->isGuest){
             $CurrentUser = User::findOne(['user_id'=> Yii::$app->user->identity->user_id]);
             $CurrentAgencyid = $CurrentUser->profile->agency_id;
+        }else{
+            $CurrentAgencyid = 0;
         }
 
-        
+        $model = new Feedback();
         /*--------delivery rating--------*/
         $feedback = Feedback::find();
         $totalresponse = $feedback->select(['count(*) as totalresponse'])
                                   ->where(['month(feedback_date)' => $month,'year(feedback_date)' => $year,'business_unit_id' => $id,'agency_id' => $CurrentAgencyid])
                                   ->asArray()
                                   ->one();
-        $evaluationAttribs = Evaluationattribute::find()->where(['business_unit_id'=>$id])->asArray()->all();
+        $evaluationAttribs = Evaluationattribute::find()->where(['business_unit_id'=>$id,'agency_id'=>$CurrentAgencyid])->asArray()->all();
         
         foreach($evaluationAttribs as $row){
             
@@ -285,7 +287,8 @@ class DefaultController extends Controller
                            ' AND rating = 5
                             AND MONTH(a.feedback_date) =' . $month .
                            ' AND YEAR(a.feedback_date) =' . $year .
-                           ' AND a.agency_id ='. $CurrentAgencyid .')';
+                           ' AND a.agency_id ='. $CurrentAgencyid .
+                           ' AND a.business_unit_id ='.$id.')';
             $deliveryrating4 = '(SELECT COUNT(*)
                         FROM tbl_feedback AS a
                         INNER JOIN tbl_delivery_rating AS b ON b.feedback_id = a.feedback_id
@@ -293,7 +296,8 @@ class DefaultController extends Controller
                            ' AND rating = 4
                             AND MONTH(a.feedback_date) =' . $month .
                             ' AND YEAR(a.feedback_date) =' . $year .
-                           ' AND a.agency_id ='. $CurrentAgencyid .')';
+                           ' AND a.agency_id ='. $CurrentAgencyid .
+                           ' AND a.business_unit_id ='.$id.')';
             $deliveryrating3 = '(SELECT COUNT(*)
                         FROM tbl_feedback AS a
                         INNER JOIN tbl_delivery_rating AS b ON b.feedback_id = a.feedback_id
@@ -301,7 +305,8 @@ class DefaultController extends Controller
                            ' AND rating = 3
                             AND MONTH(a.feedback_date) =' . $month .
                             ' AND YEAR(a.feedback_date) =' . $year .
-                           ' AND a.agency_id ='. $CurrentAgencyid .')';
+                           ' AND a.agency_id ='. $CurrentAgencyid .
+                           ' AND a.business_unit_id ='.$id.')';
             $deliveryrating2 = '(SELECT COUNT(*)
                         FROM tbl_feedback AS a
                         INNER JOIN tbl_delivery_rating AS b ON b.feedback_id = a.feedback_id
@@ -309,7 +314,8 @@ class DefaultController extends Controller
                            ' AND rating = 2
                             AND MONTH(a.feedback_date) =' . $month .
                             ' AND YEAR(a.feedback_date) =' . $year .
-                           ' AND a.agency_id ='. $CurrentAgencyid .')';
+                           ' AND a.agency_id ='. $CurrentAgencyid .
+                           ' AND a.business_unit_id ='.$id.')';
             $deliveryrating1 = '(SELECT COUNT(*)
                         FROM tbl_feedback AS a
                         INNER JOIN tbl_delivery_rating AS b ON b.feedback_id = a.feedback_id
@@ -317,7 +323,8 @@ class DefaultController extends Controller
                            ' AND rating = 1
                             AND MONTH(a.feedback_date) =' . $month .
                             ' AND YEAR(a.feedback_date) =' . $year .
-                           ' AND a.agency_id ='. $CurrentAgencyid .')';
+                           ' AND a.agency_id ='. $CurrentAgencyid .
+                           ' AND a.business_unit_id ='.$id.')';
 
             $deliveryscore5 =  $deliveryrating5 . ' *5'; //same as (SELECT COUNT(*)...) * 5
             $deliveryscore4 =  $deliveryrating4 . ' *4'; //same as (SELECT COUNT(*)...) * 4
@@ -337,7 +344,8 @@ class DefaultController extends Controller
                         ' AND rating = 5
                             AND MONTH(a.feedback_date) =' . $month .
                          ' AND YEAR(a.feedback_date) =' . $year .
-                           ' AND a.agency_id ='. $CurrentAgencyid .')';
+                           ' AND a.agency_id ='. $CurrentAgencyid .
+                           ' AND a.business_unit_id ='.$id.')';
             $importancerating4 = '(SELECT COUNT(*)
                         FROM tbl_feedback AS a
                         INNER JOIN tbl_importance_rating AS b ON b.feedback_id = a.feedback_id
@@ -345,7 +353,8 @@ class DefaultController extends Controller
                         ' AND rating = 4
                             AND MONTH(a.feedback_date) =' . $month .
                          ' AND YEAR(a.feedback_date) =' . $year .
-                           ' AND a.agency_id ='. $CurrentAgencyid .')';
+                           ' AND a.agency_id ='. $CurrentAgencyid .
+                           ' AND a.business_unit_id ='.$id.')';
             $importancerating3 = '(SELECT COUNT(*)
                         FROM tbl_feedback AS a
                         INNER JOIN tbl_importance_rating AS b ON b.feedback_id = a.feedback_id
@@ -353,7 +362,8 @@ class DefaultController extends Controller
                         ' AND rating = 3
                             AND MONTH(a.feedback_date) =' . $month .
                          ' AND YEAR(a.feedback_date) =' . $year .
-                           ' AND a.agency_id ='. $CurrentAgencyid .')';
+                           ' AND a.agency_id ='. $CurrentAgencyid .
+                           ' AND a.business_unit_id ='.$id.')';
             $importancerating2 = '(SELECT COUNT(*)
                         FROM tbl_feedback AS a
                         INNER JOIN tbl_importance_rating AS b ON b.feedback_id = a.feedback_id
@@ -361,7 +371,8 @@ class DefaultController extends Controller
                         ' AND rating = 2
                             AND MONTH(a.feedback_date) =' . $month .
                          ' AND YEAR(a.feedback_date) =' . $year .
-                           ' AND a.agency_id ='. $CurrentAgencyid .')';
+                           ' AND a.agency_id ='. $CurrentAgencyid .
+                           ' AND a.business_unit_id ='.$id.')';
             $importancerating1 = '(SELECT COUNT(*)
                         FROM tbl_feedback AS a
                         INNER JOIN tbl_importance_rating AS b ON b.feedback_id = a.feedback_id
@@ -369,7 +380,8 @@ class DefaultController extends Controller
                         ' AND rating = 1
                             AND MONTH(a.feedback_date) =' . $month .
                          ' AND YEAR(a.feedback_date) =' . $year .
-                           ' AND a.agency_id ='. $CurrentAgencyid .')';
+                           ' AND a.agency_id ='. $CurrentAgencyid .
+                           ' AND a.business_unit_id ='.$id.')';
 
             $importancescore5 = $importancerating5 . ' *5'; //same as (SELECT COUNT(*)...) * 5
             $importancescore4 = $importancerating4 . ' *4'; //same as (SELECT COUNT(*)...) * 4
@@ -382,6 +394,10 @@ class DefaultController extends Controller
             $is = '((' . $importancetotalscore . ')' . '/' . $totalresponse['totalresponse'] . ')';
 
             $gap = '('.$is .'-'. $ss.')';
+
+            
+
+            //$isTotal = +$is;
                                 
             $evaluationAttrib[] = Evaluationattribute::find()->select([
                 'evaluation_attribute_id',
@@ -512,7 +528,33 @@ class DefaultController extends Controller
         //echo '<pre>';
         //var_dump($evaluationAttrib);
         //echo '</prep';
-       
+        $importanceAttriblength = count($importanceAttrib);
+        $totalIS = 0;
+        $totalWF = 0;
+        $totalWS = 0;
+        for($i=0; $i<= $importanceAttriblength - 1; $i++){
+            $totalIS = $totalIS + $importanceAttrib[$i]['is'];
+        }
+        for($j=0; $j<= $importanceAttriblength - 1; $j++){
+            if(!$importanceAttrib[$j]['is']==0){
+                $totalWF = $totalWF + (($importanceAttrib[$j]['is'] / $totalIS) * 100);
+            }else{
+                $totalWF = 0;
+            }
+        }
+        for($k=0; $k<= $importanceAttriblength - 1; $k++){
+            if(!$importanceAttrib[$k]['is']==0){
+                $totalWS = $totalWS + ($evaluationAttrib[$k]['ss'] * (($importanceAttrib[$k]['is'] / $totalIS) * 100) / 100);
+            }else{
+                $totalWS = 0;
+            }
+        }
+        if(!$totalWS == 0){
+            $totalSatifactionRating = ($totalWS / 5) * 100;
+        }else{
+            $totalSatifactionRating = 0;
+        }
+        
         
         $evaluatioAttribProvider = new ArrayDataProvider([
             'allModels' => $evaluationAttrib,
@@ -532,16 +574,73 @@ class DefaultController extends Controller
                 'attributes' => ['evaluation_attribute_id'],
             ],
         ]);
-
         
+        $nps = $this->computeNps($id,$year,$month);
+        return $this->render('dashboard',[
+            'nps' => $nps,
+            'evaluatioAttribProvider' =>  $evaluatioAttribProvider,
+            'importanceAttribbProvider' => $importanceAttribbProvider,
+            'evaluationAttrib' => $evaluationAttrib,
+            'totalresponse' => $totalresponse,
+            'totalSatifactionRating' =>$totalSatifactionRating,
+            'feedback' => $feedback,
+            'model' => $model
+            //'totalIs' => $isTotal
+        ]);
+
+        /*
         return $this->render('reports', [
             'evaluatioAttribProvider' =>  $evaluatioAttribProvider,
             'importanceAttribbProvider' => $importanceAttribbProvider,
             'evaluationAttrib' => $evaluationAttrib,
             'totalresponse' => $totalresponse,
             //'customerExperiencerating5' => $customerExperiencerating5,
-        ]);
+        ]);*/
+    }
+    /*
+    public function actionDashboard(){
+        $nps = $this->computeNps();
+     
 
+        return $this->render('dashboard',[
+            'nps' => $nps
+        ]);   
+    }*/
+    public function computeNps($unitid,$year,$month){
+        //$month = '12';
+        //$unitid = '20';
+        //$year = '2020';
+        //$agencyid = '9';
 
+        if(!Yii::$app->user->isGuest){
+            $CurrentUser = User::findOne(['user_id'=> Yii::$app->user->identity->user_id]);
+            $CurrentAgencyid = $CurrentUser->profile->agency_id;
+        }
+        //$promotion = Promotion::find();
+        $promoters = Promotion::find()->where('rating >= 9 
+            and MONTH(a.feedback_date)= '.$month.
+            ' and YEAR(a.feedback_date)= '.$year.
+            ' and a.business_unit_id= '.$unitid.
+            ' and a.agency_id= ' .$CurrentAgencyid)
+            ->joinWith('feedback as a')->count();
+        $detractors = Promotion::find()->where('rating <= 6 
+            and MONTH(a.feedback_date)= '.$month.
+            ' and YEAR(a.feedback_date)= '.$year.
+            ' and a.business_unit_id= '.$unitid.
+            ' and a.agency_id= ' .$CurrentAgencyid)
+        ->joinWith('feedback as a')->count();
+        $total = Promotion::find()->where(
+            'MONTH(a.feedback_date)= '.$month.
+            ' and YEAR(a.feedback_date)= '.$year.
+            ' and a.business_unit_id= '.$unitid.
+            ' and a.agency_id= ' .$CurrentAgencyid)
+            ->joinWith('feedback as a')->count();    
+        if($total){
+            $nps = (($promoters/$total) * 100) - (($detractors/$total) * 100);
+        }else{
+            $nps = 0;
+        }
+    
+        return $nps;
     }
 }

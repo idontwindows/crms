@@ -13,6 +13,9 @@ use Yii;
  */
 class Promotion extends \yii\db\ActiveRecord
 {
+    public $promoters;
+    public $detractors;
+    public $total;
     /**
      * @inheritdoc
      */
@@ -42,5 +45,8 @@ class Promotion extends \yii\db\ActiveRecord
             'feedback_id' => 'Feedback ID',
             'rating' => 'Rating',
         ];
+    }
+    public function getFeedback(){
+        return $this->hasOne(Feedback::className(),['feedback_id' => 'feedback_id']);
     }
 }

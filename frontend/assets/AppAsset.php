@@ -26,12 +26,13 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/bootstrap/bootstrap.min.js',
-        //'js/jquery-ui.min.js',
+        //'js/jquery.min.js',
         'js/evaluation/raphael-min.js',
         'plugins/sparkline/jquery.sparkline.min.js',
         'plugins/slimScroll/jquery.slimscroll.min.js',
         'plugins/fastclick/fastclick.min.js',
         'js/app.min.js',
+        //'js/evaluation/Chart.js',
         //'js/dashboard.js',
         //'js/main.js',
         

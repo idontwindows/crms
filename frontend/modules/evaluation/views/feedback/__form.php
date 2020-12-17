@@ -359,7 +359,7 @@ $(document).ready(function(){
                 }
               });
           }else{
-            krajeeDialog.alert('<i class="fas fa-info-circle" style="font-size:40px"></i><b style="font-size:20px">    Please tap to sign...</b>',
+            krajeeDialog.alert('<i class="fa fa-info-circle" style="font-size:40px"></i><b style="font-size:20px">    Please tap to sign...</b>',
                 function (result) {
                         if (result) {
                           $("#btnSubmit").prop("disabled", false)

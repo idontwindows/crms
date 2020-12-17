@@ -14,9 +14,9 @@ use common\models\Profile;
   <!-- Logo -->
   <a href="/site/index" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
-    <span class="logo-mini">CRMS</span>
+    <span class="logo-mini"><span class="glyphicon glyphicon-stats"></span> CRMS</span>
     <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg">CRMS</span>
+    <span class="logo-lg"><span class="glyphicon glyphicon-stats"></span> CRMS</span>
   </a>
   <!-- Header Navbar: style can be found in header.less -->
   <nav class="navbar navbar-static-top" role="navigation">

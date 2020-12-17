@@ -9,7 +9,7 @@ use yii\helpers\Json;
 <div class="panel panel-primary">
     <div class="panel-heading" style="text-align: left; height: 40px"></div>
     <div class="panel-body">
-        <h4><b  style="color:orangered">Total No. of Respondents:</b> <b><?=$totalresponse['totalresponse']?></b></h4>
+        <!--h4><b  style="color:orangered">Total No. of Respondents:</b> <b><?php//echo $totalresponse['totalresponse'];?></b></h4-->
         <h4 style="background-color:gainsboro"><b>PART I: CUSTOMER RATING OF SERVICE QUALITY</b></h3>
             <?php
             echo GridView::widget([
@@ -30,6 +30,7 @@ use yii\helpers\Json;
                     [
                         'attribute' => 'score5',
                         'header' => '5',
+                        'format' => ['decimal', 2],
                     ],
                     [
                         'attribute' => 'rating4',
@@ -37,7 +38,8 @@ use yii\helpers\Json;
                     ],
                     [
                         'attribute' => 'score4',
-                        'header' => '4'
+                        'header' => '4',
+                        'format' => ['decimal', 2],
                     ],
                     [
                         'attribute' => 'rating3',
@@ -45,7 +47,8 @@ use yii\helpers\Json;
                     ],
                     [
                         'attribute' => 'score3',
-                        'header' => '3'
+                        'header' => '3',
+                        'format' => ['decimal', 2],
                     ],
                     [
                         'attribute' => 'rating2',
@@ -53,7 +56,8 @@ use yii\helpers\Json;
                     ],
                     [
                         'attribute' => 'score2',
-                        'header' => '2'
+                        'header' => '2',
+                        'format' => ['decimal', 2],
                     ],
                     [
                         'attribute' => 'rating1',
@@ -61,7 +65,8 @@ use yii\helpers\Json;
                     ],
                     [
                         'attribute' => 'score1',
-                        'header' => '1'
+                        'header' => '1',
+                        'format' => ['decimal', 2],
                     ],
                     [
                         'attribute' => 'deliveryscoretotal',
@@ -165,11 +170,11 @@ use yii\helpers\Json;
 
             //$deliveryrating1 = Agencyprofile::agencyprofile();
 
-            echo '<pre>';
+            //echo '<pre>';
             //$arry = json_encode($deliveryrating1);
             //var_dump(json_decode($arry));
             //var_dump($agencyprofile);
-            echo '</pre>';
+            //echo '</pre>';
                 ?>
 
                 
