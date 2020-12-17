@@ -31,5 +31,5 @@ return [
     ],
     
     'components' => $components,
-    'defaultRoute' => '/evaluation/default/dashboard',
+    //'defaultRoute' => '/evaluation/default/dashboard',
 ];

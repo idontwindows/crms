@@ -78,12 +78,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        if(!Yii::$app->user->isGuest){
-            $CurrentUser = User::findOne(['user_id'=> Yii::$app->user->identity->user_id]);
-            $CurrenUserAgencyId = $CurrentUser->profile->agency_id;
-            //$Agency = Agency::findOne(['agency_id' => $CurrenUserAgencyId]);
-        }
-        return $this->redirect(['/evaluation/feedback/index' , 'agency_id' => $CurrenUserAgencyId]);
+        return $this->redirect(['/evaluation/default/dashboard']);
     }
 
     /**
