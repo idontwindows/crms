@@ -20,7 +20,8 @@ class AppAsset extends AssetBundle
         'plugins/iCheck/flat/blue.css',
         'css/site.css',
         'css/breadcrumbs.css',
-        'css/customLogin.css'
+        'css/customLogin.css',
+        //'css/Chart.min.css'
      
  
     ];
@@ -32,7 +33,7 @@ class AppAsset extends AssetBundle
         'plugins/slimScroll/jquery.slimscroll.min.js',
         'plugins/fastclick/fastclick.min.js',
         'js/app.min.js',
-        //'js/evaluation/Chart.js',
+        //'js/Chart.min.js',
         //'js/dashboard.js',
         //'js/main.js',
         

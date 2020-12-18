@@ -13,14 +13,16 @@ use common\models\evaluation\Businessunit;
 <section class="content-header">
   <h1 style="font-weight:bold; font-size:40px">Dashboard</h1>
   <div class="row">
-    <?php $form = ActiveForm::begin(['id' => 'dashboard-form',
+    <?php $form = ActiveForm::begin([
+      'id' => 'dashboard-form',
       'action' => 'dashboard',
-      'method' => 'get']); ?>
+      'method' => 'get'
+    ]); ?>
     <div class="col-lg-3 col-6">
       <?= $form->field($model, 'business_unit_id')
         ->dropDownList(
           ArrayHelper::map(Businessunit::find()->asArray()->all(), 'business_unit_id', 'name'),           // Flat array ('id'=>'label')
-          ['prompt' => 'Select Unit','id' => 'listBusiness', 'name' => 'id']    // options
+          ['prompt' => 'Select Unit', 'id' => 'listBusiness', 'name' => 'id']    // options
         )->label(false); ?>
     </div>
     <div class="col-sm-3 col-6">
@@ -54,7 +56,7 @@ use common\models\evaluation\Businessunit;
         )->label(false); ?>
     </div>
     <div class="col-sm-3 col-6">
-      <?= Html::submitButton('Apply', ['id' => 'btnApply', 'class' => 'btn btn-success btn-sm', 'style' => 'float: left; width: 100px; height:33px']) ?>  
+      <?= Html::submitButton('Apply', ['id' => 'btnApply', 'class' => 'btn btn-success btn-sm', 'style' => 'float: left; width: 100px; height:33px']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
@@ -96,14 +98,15 @@ use common\models\evaluation\Businessunit;
       <!-- small box -->
       <div class="small-box bg-red">
         <div class="inner">
-          <h3><?= number_format((float)$nps, 2, '.', '') ?></h3>
+          <h3><?= number_format((float)$nps[2], 2, '.', '') ?></h3>
 
           <p>Net Promoter Score</p>
         </div>
         <div class="icon">
           <i class="ion ion-pie-graph"></i>
         </div>
-        <a href="#" class="small-box-footer box-footer-nps">More info <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="#" class="small-box-footer box-footer-nps" id="link-nps" onclick="updatePieChart()">More info <i class="fa fa-arrow-circle-right"></i></a>
+        <button type="button" id="box-footer-nps"  style="display:none">Trigger Click</button>
       </div>
     </div>
     <!-- ./col -->
@@ -136,23 +139,128 @@ use common\models\evaluation\Businessunit;
     </div>
     /.box-footer -->
   </div>
+
+  <div class="row">
+    <div class="col-lg-6 col-6">
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Customer Satisfaction Feedback</h3>
+
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body" style="">
+          <!-- bar chart canvas element -->
+          <canvas id="income" width="550" height="370"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-6">
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Net Promoter Score</h3>
+
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body" style="">
+          <div class = "row">
+          <div class="col-lg-2 col-6">
+          <div style="background-color:#878BB6; width:25px; height:25px"></div><div>Promoters</div>
+          <div style="background-color:#4ACAB4; width:25px; height:25px"></div><div>Detractors</div>
+          <div style="background-color:#FF8153; width:25px; height:25px"></div><div>Passives</div>
+          </div>
+          <div class="col-lg-10 col-6">
+          <canvas id="countries" width=370 height=370></canvas>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <?php
-  //echo '<pre>';
+  echo '<pre>';
   //echo ($evaluationAttrib[1]['score5'] + 1);
   //echo $month;
-  //var_dump (Feedback::find()->select('MONTH(feedback_date) as month')->all());
-  //echo '</pre>';
+  var_dump (json_encode($nps));
+  echo '</pre>';
   ?>
 
 </section>
 
 <script>
-document.getElementById('listBusiness').value = "<?php echo isset($_GET['id']) ? $_GET['id'] : '';?>"
-document.getElementById('listMonth').value = "<?php echo isset($_GET['month']) ? $_GET['month'] : '';?>"
-document.getElementById('listYear').value = "<?php echo isset($_GET['year']) ? $_GET['year'] : '';?>"
+  var updatebarChart = function(){
+    var income = document.getElementById("income").getContext("2d");
+    // draw bar chart
+    new Chart(income).Bar(barData);
+  }
+  var updatepieChart = function(){
+      // get pie chart canvas
+    var countries = document.getElementById("countries").getContext("2d");
+    // draw pie chart
+    new Chart(countries).Pie(pieData, pieOptions);
+    // bar chart data
+  }
+  // pie chart data
+  var pieData = [{
+      label: 'Promoters',
+      value: <?=$nps[0]?>,
+      color: "#878BB6"
+    },
+    {
+      label: 'Detractors',
+      value: <?=$nps[1]?>,
+      color: "#4ACAB4"
+    },
+    {
+      label: 'Passive',
+      value: <?=$nps[3]?>,
+      color: "#FF8153"
+    },
+  ];
+  // pie chart options
+  var pieOptions = {
+    segmentShowStroke: false,
+    animateScale: true
+  }
+  updatepieChart();
+
+  var barData = {
+    labels: ["January", "February", "March", "April", "May", "June","July","August","September","October","November","December"],
+    datasets: [{
+        fillColor: "#48A497",
+        strokeColor: "#48A4D1",
+        data: [50,50,50,50,50,50,50,50,50,50,50,50]
+      },
+    ]
+  }
+  // get bar chart canvas
+
+  updatebarChart();
+  
+ 
+
+</script>
+
+<script>
+  document.getElementById('listBusiness').value = "<?php echo isset($_GET['id']) ? $_GET['id'] : ''; ?>"
+  document.getElementById('listMonth').value = "<?php echo isset($_GET['month']) ? $_GET['month'] : ''; ?>"
+  document.getElementById('listYear').value = "<?php echo isset($_GET['year']) ? $_GET['year'] : ''; ?>"
   jQuery(document).ready(function($) {
     $("#box-footer-respondents").click(function() {
       $("#link-respondents")[0].click();
+    });
+    $("#box-footer-csr").click(function() {
+      $("#link-csr")[0].click();
     });
     $("#box-footer-csr").click(function() {
       $("#link-csr")[0].click();
@@ -161,5 +269,8 @@ document.getElementById('listYear').value = "<?php echo isset($_GET['year']) ? $
 
   function showCsf() {
     $(".box-info-csf").slideToggle();
+  }
+  function updatePieChart(){
+    updatepieChart();
   }
 </script>

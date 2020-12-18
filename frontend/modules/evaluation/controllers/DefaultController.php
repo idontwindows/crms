@@ -629,6 +629,12 @@ class DefaultController extends Controller
             ' and a.business_unit_id= '.$unitid.
             ' and a.agency_id= ' .$CurrentAgencyid)
         ->joinWith('feedback as a')->count();
+        $passive = Promotion::find()->where('rating BETWEEN 7 and 8
+        and MONTH(a.feedback_date)= '.$month.
+        ' and YEAR(a.feedback_date)= '.$year.
+        ' and a.business_unit_id= '.$unitid.
+        ' and a.agency_id= ' .$CurrentAgencyid)
+    ->joinWith('feedback as a')->count();
         $total = Promotion::find()->where(
             'MONTH(a.feedback_date)= '.$month.
             ' and YEAR(a.feedback_date)= '.$year.
@@ -640,7 +646,7 @@ class DefaultController extends Controller
         }else{
             $nps = 0;
         }
-    
-        return $nps;
+        $npsArray = [$promoters,$detractors,$nps,$passive];
+        return $npsArray;
     }
 }
