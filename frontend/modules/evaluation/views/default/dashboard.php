@@ -188,11 +188,11 @@ use common\models\evaluation\Businessunit;
     </div>
   </div>
   <?php
-  echo '<pre>';
+  //echo '<pre>';
   //echo ($evaluationAttrib[1]['score5'] + 1);
   //echo $month;
-  var_dump (json_encode($nps));
-  echo '</pre>';
+  //var_dump (json_encode($nps));
+  //echo '</pre>';
   ?>
 
 </section>
