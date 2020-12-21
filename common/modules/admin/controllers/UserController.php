@@ -14,6 +14,7 @@ use common\models\evaluation\Position;
 use common\models\evaluation\Division;
 use yii\helpers\ArrayHelper;
 use common\models\components\Helper;
+use common\models\form\ChangePassword;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -170,6 +171,17 @@ class UserController extends Controller
                 'listDivisions' => $listDivisions,
                 'listPositions'=>$listPositions,
                 'listAgency' => $listAgency 
+        ]);
+    }
+    public function actionChangePassword()
+    {
+        $model = new ChangePassword();
+        if ($model->load(Yii::$app->getRequest()->post()) && $model->change()) {
+            return $this->goHome();
+        }
+
+        return $this->render('change-password', [
+                'model' => $model,
         ]);
     }
 }

@@ -395,8 +395,6 @@ class DefaultController extends Controller
 
             $gap = '('.$is .'-'. $ss.')';
 
-            
-
             //$isTotal = +$is;
                                 
             $evaluationAttrib[] = Evaluationattribute::find()->select([
