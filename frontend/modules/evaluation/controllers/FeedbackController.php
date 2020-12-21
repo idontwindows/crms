@@ -57,7 +57,7 @@ class FeedbackController extends Controller
         //$searchModel = new FeedbackSearch();
         //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         if (Yii::$app->user->isGuest){
-            $this->layout = '@app/views/layouts/csf/main';
+            $this->layout = '@app/views/layouts/custom/bootstrap';
         }
 
         //$agencyprofile = Agencyprofile::find()->one();
