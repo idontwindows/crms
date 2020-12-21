@@ -89,7 +89,15 @@ use common\models\Profile;
                             ],
                         ],
                     ],*/
-                    ['label' => 'Change Password', 'icon' => 'user', 'url' => ['/admin/user/change-password'],'visible'=> Yii::$app->user->can('access-change-password')],
+                    [
+                        'label' => 'Settings',
+                        'icon' => 'fas fa-cog',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => 'Change Password', 'icon' => 'user', 'url' => ['/admin/user/change-password'],'visible'=> Yii::$app->user->can('access-change-password')],
+                        ],
+                        'visible'=> Yii::$app->user->can('access-settings')
+                    ],
                     ['label' => 'Login', 'icon' => 'user', 'url' => ['/site/login'], 'visible' => Yii::$app->user->isGuest],
                     ['label' => 'Logout', 'icon' => 'user-times', 'url' => Yii::$app->urlManager->createUrl(['/site/logout']),
                     'visible' => !Yii::$app->user->isGuest, 'template' => '<a href="{url}" data-method="post">{icon}{label}</a>'],

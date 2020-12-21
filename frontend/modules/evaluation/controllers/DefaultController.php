@@ -57,7 +57,11 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        if(!Yii::$app->user->isGuest){
+            $CurrentUser = User::findOne(['user_id'=> Yii::$app->user->identity->user_id]);
+            $CurrentAgencyid = $CurrentUser->profile->agency_id;
+        }
+        return $this->redirect(['feedback/index', 'agency_id' => $CurrentAgencyid]);
     }
     
         /**
