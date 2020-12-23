@@ -20,32 +20,39 @@
 
 <script>
     //signature canvas
-    var canvas = document.getElementById("signatureform");
-    var signaturePad = new SignaturePad(canvas);
-
-    $('#clear-signature').on('click', function() {
-        signaturePad.clear();
-        document.getElementById('sigId').value = "";
-        document.getElementById('feedback-signature').value = "";
-        var myCanvas = document.getElementById('signature');
-        myCanvas.src = '/images/tap.png';
-    });
-
-    $("body").on("touchend","#signatureform",function () {
+    $(document).ready(function(){
         var canvas = document.getElementById("signatureform");
-        var dataURL = canvas.toDataURL();
-        document.getElementById("sigId").value = dataURL;
-        
-    });
+        var signaturePad = new SignaturePad(canvas);
 
-    $("body").on("click","#submit-signature",function () {
-        var myCanvas = document.getElementById('signature');
-        var sigtext = document.getElementById('sigId')
-        if(sigtext.value != ""){
-            myCanvas.src = document.getElementById('sigId').value;
-            document.getElementById("feedback-signature").value = myCanvas.src; 
-            $("#modal .close").click(); 
-        } 
+        $('#clear-signature').on('click', function() {
+            signaturePad.clear();
+            document.getElementById('sigId').value = "";
+            document.getElementById('feedback-signature').value = "";
+            var myCanvas = document.getElementById('signature');
+            myCanvas.src = '/images/tap.png';
+        });
+
+        $("body").on("touchend","#signatureform",function () {
+            var canvas = document.getElementById("signatureform");
+            var dataURL = canvas.toDataURL();
+            document.getElementById("sigId").value = dataURL;
+        });
+        $("body").on("mouseup","#signatureform",function () {
+            var canvas = document.getElementById("signatureform");
+            var dataURL = canvas.toDataURL();
+            document.getElementById("sigId").value = dataURL;
+        });
+
+        $('#submit-signature').on('click',function () {
+            var myCanvas = document.getElementById('signature');
+            var sigtext = document.getElementById('sigId')
+            if(sigtext.value != ""){
+                myCanvas.src = document.getElementById('sigId').value;
+                document.getElementById("feedback-signature").value = myCanvas.src; 
+                $("#modal .close").click(); 
+            } 
+        });
     });
+ 
 
 </script>

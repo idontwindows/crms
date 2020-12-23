@@ -15,13 +15,13 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
         <div class="col-lg-4 col-sm-4">
             <div class="card">
                 <a href=<?='create?business_unit_id=20&agency_id=' . $_GET['agency_id'] ?>><img class="image" src="/images/cfs/budgeting.jpg" alt="Accounting and Budgetting"></a>
-                <div class="text">Accounting and Budgetting</div>
+                <div class="text">Accounting and Budgeting</div>
             </div>
         </div>
         <div class="col-lg-4 col-sm-4">
             <div class="card card-image2">
                 <a href=<?='create?business_unit_id=30&agency_id=' . $_GET['agency_id'] ?>><img class="image" src="/images/cfs/cashiering.jpg" alt="Casheiring"></a>
-                <div class="text">Casheiring</div>
+                <div class="text">Cashiering</div>
             </div>
         </div>
         <div class="col-lg-4 col-sm-4">
