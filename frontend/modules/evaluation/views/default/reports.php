@@ -1,4 +1,5 @@
 <?php
+
 use common\models\evaluation\Feedback;
 use kartik\grid\GridView;
 use yii\helpers\Json;
@@ -7,7 +8,11 @@ use yii\helpers\Json;
 //$totalresponse = $feedback->select(['count(*) as totalresponse'])->where(['month(feedback_date)' => $_GET['month'],'year(feedback_date)' => $_GET['year'],'business_unit_id' => $_GET['id']])->asArray()->one();
 ?>
 <div class="panel panel-primary">
-    <div class="panel-heading" style="text-align: left; height: 40px"></div>
+    <div class="panel-heading clearfix">
+        <div class="btn-group pull-right">
+        <button class="btn-print"><i class="fa fa-print"></i></button>
+        </div>
+    </div>
     <div class="panel-body">
         <!--h4><b  style="color:orangered">Total No. of Respondents:</b> <b><?php//echo $totalresponse['totalresponse'];?></b></h4-->
         <h4 style="background-color:gainsboro"><b>PART I: CUSTOMER RATING OF SERVICE QUALITY</b></h3>
@@ -86,13 +91,13 @@ use yii\helpers\Json;
                         //'pageSummary' => true
                         //'value' => 'deliveryscoretotal'
                     ],
-                    
+
                 ],
                 'responsive' => true,
                 'hover' => true
             ]);
             ?>
-            <h4 style="background-color:gainsboro"><b>PART II:  IMPORTANCE OF THESE ATTRIBUTES TO THE CUSTOMERS</b></h3>
+            <h4 style="background-color:gainsboro"><b>PART II: IMPORTANCE OF THESE ATTRIBUTES TO THE CUSTOMERS</b></h3>
                 <?php
                 echo GridView::widget([
                     'dataProvider' => $importanceAttribbProvider,
@@ -106,11 +111,11 @@ use yii\helpers\Json;
                             'header' => 'IMPORTANCE OF SERVICE QUALITY ATTRIBUTES TO CUSTOMERS'
                         ],
                         [
-                            'attribute' =>'rating5', //'rating5',
+                            'attribute' => 'rating5', //'rating5',
                             'header' => 'Very Satisfied'
                         ],
                         [
-                            'attribute' =>'score5', //'rating5',
+                            'attribute' => 'score5', //'rating5',
                             'header' => '5'
                         ],
                         [
@@ -118,7 +123,7 @@ use yii\helpers\Json;
                             'header' => 'Quite Satisfied'
                         ],
                         [
-                            'attribute' =>'score4', //'rating5',
+                            'attribute' => 'score4', //'rating5',
                             'header' => '4'
                         ],
                         [
@@ -126,7 +131,7 @@ use yii\helpers\Json;
                             'header' => 'Neutral'
                         ],
                         [
-                            'attribute' =>'score3', //'rating5',
+                            'attribute' => 'score3', //'rating5',
                             'header' => '3'
                         ],
                         [
@@ -134,7 +139,7 @@ use yii\helpers\Json;
                             'header' => 'Quite disatisfied'
                         ],
                         [
-                            'attribute' =>'score2', //'rating5',
+                            'attribute' => 'score2', //'rating5',
                             'header' => '2'
                         ],
                         [
@@ -142,7 +147,7 @@ use yii\helpers\Json;
                             'header' => 'Very disatisfied'
                         ],
                         [
-                            'attribute' =>'score1', //'rating5',
+                            'attribute' => 'score1', //'rating5',
                             'header' => '1'
                         ],
                         [
@@ -162,21 +167,34 @@ use yii\helpers\Json;
                 ]);
 
                 //$ASD = $feedback->select(['count(*) as totalresponse'])->where(['month(feedback_date)' => $_GET['month'],'year(feedback_date)' => $_GET['year'],'business_unit_id' => $_GET['id']])->asArray()->one();
-               // echo '<pre>';
+                // echo '<pre>';
                 //$array = json_encode($importanceAttribbProvider);
-               // var_dump($deliveryrating52);
+                // var_dump($deliveryrating52);
                 //echo $evaluationAttrib[0]['evaluation_attribute_id'];
                 //echo '</pre>';
 
-            //$deliveryrating1 = Agencyprofile::agencyprofile();
+                //$deliveryrating1 = Agencyprofile::agencyprofile();
 
-            //echo '<pre>';
-            //$arry = json_encode($deliveryrating1);
-            //var_dump(json_decode($arry));
-            //var_dump($agencyprofile);
-            //echo '</pre>';
+                //echo '<pre>';
+                //$arry = json_encode($deliveryrating1);
+                //var_dump(json_decode($arry));
+                //var_dump($agencyprofile);
+                //echo '</pre>';
                 ?>
-
-                
-    </div>
+   </div>
 </div>
+
+<style>
+.btn-print {
+  background-color: #337ab7;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Darker background on mouse-over */
+.btn-print:hover {
+  background-color: #0345fc;
+}
+</style>
