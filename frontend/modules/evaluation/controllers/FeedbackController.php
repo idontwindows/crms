@@ -69,7 +69,7 @@ class FeedbackController extends Controller
         foreach($businessUnits as $businessUnit){
             $counter[$businessUnit['business_unit_id']] = Feedback::find()->where(['business_unit_id' => $businessUnit['business_unit_id'],'agency_id'=> !Yii::$app->user->isGuest ? $this->getCurrentAgencyid() : $agency_id])->count();
         }
-        return $this->render('index', [
+        return $this->render('index_', [
             //'searchModel' => $searchModel,
             //'dataProvider' => $dataProvider,
             //'businessUnits' => $businessUnits,

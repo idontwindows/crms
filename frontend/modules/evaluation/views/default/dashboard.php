@@ -25,7 +25,7 @@ use common\models\evaluation\Businessunit;
           ['prompt' => 'Select Unit', 'id' => 'listBusiness', 'name' => 'id']    // options
         )->label(false); ?>
     </div>
-    <div class="col-sm-3 col-6">
+    <div class="col-lg-3 col-6">
       <?= $form->field($model, 'month')
         ->dropDownList(
           [
@@ -55,7 +55,7 @@ use common\models\evaluation\Businessunit;
           ['prompt' => 'Select Year', 'id' => 'listYear', 'name' => 'year']    // options
         )->label(false); ?>
     </div>
-    <div class="col-sm-3 col-6">
+    <div class="col-lg-3 col-6">
       <?= Html::submitButton('Apply', ['id' => 'btnApply', 'class' => 'btn btn-success btn-sm', 'style' => 'float: left; width: 100px; height:33px']) ?>
     </div>
 

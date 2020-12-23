@@ -9,6 +9,14 @@ use common\models\evaluation\Agency;
 
 AppAsset::register($this);
 $agency = Agency::find()->where(['agency_id' => $_GET['agency_id']])->one();
+$StartYear = 2019;
+$CurYear = date('Y');
+if ($StartYear >= $CurYear) {
+    $CopyrightYear = $StartYear;
+} else {
+    $CopyrightYear = $StartYear . '-' . $CurYear;
+}
+$Host = "//" . Yii::$app->getRequest()->serverName;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -26,7 +34,7 @@ $agency = Agency::find()->where(['agency_id' => $_GET['agency_id']])->one();
 <body>
     <?php $this->beginBody() ?>
 
-    <nav class="navbar" style="background-color:#007bff">
+    <nav class="navbar" style="background-color:#343A40">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="/site/index" style="color:white; font-weight:bold"><span class="glyphicon glyphicon-stats"></span> CRMS</a>
@@ -41,6 +49,15 @@ $agency = Agency::find()->where(['agency_id' => $_GET['agency_id']])->one();
     <div>
         <?= Alert::widget() ?>
         <?= $content ?>
+    </div>
+    <div class="footer">
+        <div class="pull-right hidden-xs" style="margin-right:5px; color:black;">
+            CRMS <b>Version</b> 1.0
+        </div>
+        <div style="margin-left:5px; color:black;">
+            <strong>Copyright &copy; <?= $CopyrightYear ?> <a href="//region9.dost.gov.ph" target="_blank">DOST-IX</a>.</strong> All rights
+            reserved. | <a href="<?= $Host ?>">frontend</a>.
+        </div>
     </div>
 
     <?php $this->endBody() ?>
