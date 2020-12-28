@@ -132,23 +132,18 @@ echo Dialog::widget();
                 <div id="checkboxes">
                   <div class="checkboxgroup">
                     <input type="radio" class='number1' name=<?= 'Importancerating[' . $i . '][rating]' ?> id="my_radio_button_id1" value="1" />
-                    <label for="my_radio_button_id1">Very Dis-satisfied</label>
                   </div>
                   <div class="checkboxgroup">
                     <input type="radio" class='number2' name=<?= 'Importancerating[' . $i . '][rating]' ?> id="my_radio_button_id2" value="2" />
-                    <label for="my_radio_button_id2">Quite Dis-satisfied</label>
                   </div>
                   <div class="checkboxgroup">
-                    <input type="radio" class='number3' name=<?= 'Importancerating[' . $i . '][rating]' ?> id="my_radio_button_id3" value="3" />
-                    <label for="my_radio_button_id3">Neutral</label>
+                    <input type="radio" class='number3' name=<?= 'Importancerating[' . $i . '][rating]' ?> id="my_radio_button_id3" value="3" /> 
                   </div>
                   <div class="checkboxgroup">
-                    <input type="radio" class='number4' name=<?= 'Importancerating[' . $i . '][rating]' ?> id="my_radio_button_id4" value="4" />
-                    <label for="my_radio_button_id4">Quite Satisfied</label>
+                    <input type="radio" class='number4' name=<?= 'Importancerating[' . $i . '][rating]' ?> id="my_radio_button_id4" value="4" />                
                   </div>
                   <div class="checkboxgroup">
                     <input type="radio" class='number5' name=<?= 'Importancerating[' . $i . '][rating]' ?> id="my_radio_button_id5" value="5" />
-                    <label for="my_radio_button_id5">Very Satisfied</label>
                   </div>
                 </div>
 
