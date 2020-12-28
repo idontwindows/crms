@@ -20,7 +20,7 @@ use common\models\system\Profile;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Attributes';
-$this->params['breadcrumbs'][] = ['label' => 'Evaluation', 'url' => ['/index']];
+//$this->params['breadcrumbs'][] = ['label' => 'Evaluation', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 // Modal Create Request

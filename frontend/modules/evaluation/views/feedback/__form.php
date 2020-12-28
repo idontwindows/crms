@@ -58,14 +58,38 @@ echo Dialog::widget();
 
               <div class="d-flex align-items-center justify-content-center">
 
+                <div id="checkboxes">
+                  <div class="checkboxgroup">
+                    <input type="radio" class='smiley1' name=<?= 'Deliveryrating[' . $k . '][rating]' ?> id="my_radio_button_id1" value="1" />
+                    <label for="my_radio_button_id1">Very Dis-satisfied</label>
+                  </div>
+                  <div class="checkboxgroup">
+                    <input type="radio" class='smiley2' name=<?= 'Deliveryrating[' . $k . '][rating]' ?> id="my_radio_button_id2" value="2" />
+                    <label for="my_radio_button_id2">Quite Dis-satisfied</label>
+                  </div>
+                  <div class="checkboxgroup">
+                    <input type="radio" class='smiley3' name=<?= 'Deliveryrating[' . $k . '][rating]' ?> id="my_radio_button_id3" value="3" />
+                    <label for="my_radio_button_id3">Neutral</label>
+                  </div>
+                  <div class="checkboxgroup">
+                    <input type="radio" class='smiley4' name=<?= 'Deliveryrating[' . $k . '][rating]' ?> id="my_radio_button_id4" value="4" />
+                    <label for="my_radio_button_id4">Quite Satisfied</label>
+                  </div>
+                  <div class="checkboxgroup">
+                    <input type="radio" class='smiley4' name=<?= 'Deliveryrating[' . $k . '][rating]' ?> id="my_radio_button_id5" value="5" />
+                    <label for="my_radio_button_id5">Very Satisfied</label>
+                  </div>
+                </div>
+
                 <!--row begin-->
                 <!--look for smiley.css at frontend/web/css -->
+                <!--
                 <div class="col-md-2"><?= $form->field($modelDeliveryrating, "[$k]rating")->radio(['value' => 1, 'class' => 'smiley1', 'uncheck' => null,])->label(false) ?></div>
                 <div class="col-md-2"><?= $form->field($modelDeliveryrating, "[$k]rating")->radio(['value' => 2, 'class' => 'smiley2', 'uncheck' => null,])->label(false) ?></div>
                 <div class="col-md-2"><?= $form->field($modelDeliveryrating, "[$k]rating")->radio(['value' => 3, 'class' => 'smiley3', 'uncheck' => null,])->label(false) ?></div>
                 <div class="col-md-2"><?= $form->field($modelDeliveryrating, "[$k]rating")->radio(['value' => 4, 'class' => 'smiley4', 'uncheck' => null,])->label(false) ?></div>
                 <div class="col-md-2"><?= $form->field($modelDeliveryrating, "[$k]rating")->radio(['value' => 5, 'class' => 'smiley5', 'uncheck' => null,])->label(false) ?></div>
-
+                -->
                 <!--row end-->
               </div>
             </div>
@@ -78,11 +102,6 @@ echo Dialog::widget();
       <!--tab end-->
       <?php $k++; ?>
     <?php } ?>
-
-
-
-
-
 
 
     <?php $i = 0; ?>
@@ -109,13 +128,39 @@ echo Dialog::widget();
               </div>
 
               <div class="d-flex align-items-center justify-content-center">
+
+                <div id="checkboxes">
+                  <div class="checkboxgroup">
+                    <input type="radio" class='number1' name=<?= 'Importancerating[' . $i . '][rating]' ?> id="my_radio_button_id1" value="1" />
+                    <label for="my_radio_button_id1">Very Dis-satisfied</label>
+                  </div>
+                  <div class="checkboxgroup">
+                    <input type="radio" class='number2' name=<?= 'Importancerating[' . $i . '][rating]' ?> id="my_radio_button_id2" value="2" />
+                    <label for="my_radio_button_id2">Quite Dis-satisfied</label>
+                  </div>
+                  <div class="checkboxgroup">
+                    <input type="radio" class='number3' name=<?= 'Importancerating[' . $i . '][rating]' ?> id="my_radio_button_id3" value="3" />
+                    <label for="my_radio_button_id3">Neutral</label>
+                  </div>
+                  <div class="checkboxgroup">
+                    <input type="radio" class='number4' name=<?= 'Importancerating[' . $i . '][rating]' ?> id="my_radio_button_id4" value="4" />
+                    <label for="my_radio_button_id4">Quite Satisfied</label>
+                  </div>
+                  <div class="checkboxgroup">
+                    <input type="radio" class='number5' name=<?= 'Importancerating[' . $i . '][rating]' ?> id="my_radio_button_id5" value="5" />
+                    <label for="my_radio_button_id5">Very Satisfied</label>
+                  </div>
+                </div>
+
                 <!--row begin-->
                 <!--look for smiley.css at frontend/web/css -->
-                <div class="col-md-2"><?= $form->field($modelImportancerating, "[$i]rating")->radio(['value' => 1, 'class' => 'smiley1', 'uncheck' => null,])->label(false) ?></div>
-                <div class="col-md-2"><?= $form->field($modelImportancerating, "[$i]rating")->radio(['value' => 2, 'class' => 'smiley2', 'uncheck' => null,])->label(false) ?></div>
-                <div class="col-md-2"><?= $form->field($modelImportancerating, "[$i]rating")->radio(['value' => 3, 'class' => 'smiley3', 'uncheck' => null,])->label(false) ?></div>
-                <div class="col-md-2"><?= $form->field($modelImportancerating, "[$i]rating")->radio(['value' => 4, 'class' => 'smiley4', 'uncheck' => null,])->label(false) ?></div>
-                <div class="col-md-2"><?= $form->field($modelImportancerating, "[$i]rating")->radio(['value' => 5, 'class' => 'smiley5', 'uncheck' => null,])->label(false) ?></div>
+                <!--
+                <div class="col-md-2"><?= $form->field($modelImportancerating, "[$i]rating")->radio(['value' => 1, 'class' => 'number1', 'uncheck' => null,])->label(false) ?></div>
+                <div class="col-md-2"><?= $form->field($modelImportancerating, "[$i]rating")->radio(['value' => 2, 'class' => 'number2', 'uncheck' => null,])->label(false) ?></div>
+                <div class="col-md-2"><?= $form->field($modelImportancerating, "[$i]rating")->radio(['value' => 3, 'class' => 'number3', 'uncheck' => null,])->label(false) ?></div>
+                <div class="col-md-2"><?= $form->field($modelImportancerating, "[$i]rating")->radio(['value' => 4, 'class' => 'number4', 'uncheck' => null,])->label(false) ?></div>
+                <div class="col-md-2"><?= $form->field($modelImportancerating, "[$i]rating")->radio(['value' => 5, 'class' => 'number5', 'uncheck' => null,])->label(false) ?></div>
+                -->
               </div>
               <!--row end-->
             </div>
@@ -130,42 +175,67 @@ echo Dialog::widget();
     <?php } ?>
 
 
-      
+
     <div class="tab">
-        <!--tab begin-->
-        <div class="panel panel-info">
-          <!--panel begin-->
-          <div class="panel-heading"><b>OVER-ALL CUSTOMER EXPERIENCE <span style="color:red">(Required)</span></b></div>
-          <div class="panel-body" style="max-height: 1000px; height: 200px;">
-            <!--panel body begin-->
-            <div class="form-group">
-              <div class="d-flex align-items-center justify-content-center">
-                <!--from-group begin-->
-                <?php //$formImportancerating->rating = 3; 
-                ?>
-                <b style="font-size:1.8vw;">OVER-ALL CUSTOMER EXPERIENCE</b>
-                <?php //$form->field($modelImportancerating, "[$i]rating")->radioList($ratingScale, ['inline'=>true])->label($attribute->attribute_name) 
-                ?>
+      <!--tab begin-->
+      <div class="panel panel-info">
+        <!--panel begin-->
+        <div class="panel-heading"><b>OVER-ALL CUSTOMER EXPERIENCE <span style="color:red">(Required)</span></b></div>
+        <div class="panel-body" style="max-height: 1000px; height: 200px;">
+          <!--panel body begin-->
+          <div class="form-group">
+            <div class="d-flex align-items-center justify-content-center">
+              <!--from-group begin-->
+              <?php //$formImportancerating->rating = 3; 
+              ?>
+              <b style="font-size:1.8vw;">OVER-ALL CUSTOMER EXPERIENCE</b>
+              <?php //$form->field($modelImportancerating, "[$i]rating")->radioList($ratingScale, ['inline'=>true])->label($attribute->attribute_name) 
+              ?>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-center">
+              <div id="checkboxes">
+                <div class="checkboxgroup">
+                  <input type="radio" class='smiley1' name="CustomerExperience[rating]" id="my_radio_button_id1" value="1" />
+                  <label for="my_radio_button_id1">Very Dis-satisfied</label>
+                </div>
+                <div class="checkboxgroup">
+                  <input type="radio" class='smiley2' name="CustomerExperience[rating]" id="my_radio_button_id2" value="2" />
+                  <label for="my_radio_button_id2">Quite Dis-satisfied</label>
+                </div>
+                <div class="checkboxgroup">
+                  <input type="radio" class='smiley3' name="CustomerExperience[rating]" id="my_radio_button_id3" value="3" />
+                  <label for="my_radio_button_id3">Neutral</label>
+                </div>
+                <div class="checkboxgroup">
+                  <input type="radio" class='smiley4' name="CustomerExperience[rating]" id="my_radio_button_id4" value="4" />
+                  <label for="my_radio_button_id4">Quite Satisfied</label>
+                </div>
+                <div class="checkboxgroup">
+                  <input type="radio" class='smiley4' name="CustomerExperience[rating]" id="my_radio_button_id5" value="5" />
+                  <label for="my_radio_button_id5">Very Satisfied</label>
+                </div>
               </div>
 
-              <div class="d-flex align-items-center justify-content-center">
-                <!--row begin-->
-                <!--look for smiley.css at frontend/web/css -->
-                <div class="col-md-2"><?= $form->field($modelCustomerExperience, "rating")->radio(['value' => 1, 'class' => 'smiley1', 'uncheck' => null,])->label(false) ?></div>
-                <div class="col-md-2"><?= $form->field($modelCustomerExperience, "rating")->radio(['value' => 2, 'class' => 'smiley2', 'uncheck' => null,])->label(false) ?></div>
-                <div class="col-md-2"><?= $form->field($modelCustomerExperience, "rating")->radio(['value' => 3, 'class' => 'smiley3', 'uncheck' => null,])->label(false) ?></div>
-                <div class="col-md-2"><?= $form->field($modelCustomerExperience, "rating")->radio(['value' => 4, 'class' => 'smiley4', 'uncheck' => null,])->label(false) ?></div>
-                <div class="col-md-2"><?= $form->field($modelCustomerExperience, "rating")->radio(['value' => 5, 'class' => 'smiley5', 'uncheck' => null,])->label(false) ?></div>
-              </div>
-              <!--row end-->
+              <!--row begin-->
+              <!--look for smiley.css at frontend/web/css -->
+              <!--
+              <div class="col-md-2"><?= $form->field($modelCustomerExperience, "rating")->radio(['value' => 1, 'class' => 'smiley1', 'uncheck' => null,])->label(false) ?></div>
+              <div class="col-md-2"><?= $form->field($modelCustomerExperience, "rating")->radio(['value' => 2, 'class' => 'smiley2', 'uncheck' => null,])->label(false) ?></div>
+              <div class="col-md-2"><?= $form->field($modelCustomerExperience, "rating")->radio(['value' => 3, 'class' => 'smiley3', 'uncheck' => null,])->label(false) ?></div>
+              <div class="col-md-2"><?= $form->field($modelCustomerExperience, "rating")->radio(['value' => 4, 'class' => 'smiley4', 'uncheck' => null,])->label(false) ?></div>
+              <div class="col-md-2"><?= $form->field($modelCustomerExperience, "rating")->radio(['value' => 5, 'class' => 'smiley5', 'uncheck' => null,])->label(false) ?></div>
+              -->
             </div>
-            <!--from-group end-->
+            <!--row end-->
           </div>
-          <!--panel body end-->
+          <!--from-group end-->
         </div>
-        <!--panel end-->
+        <!--panel body end-->
       </div>
-      <!--tab end-->
+      <!--panel end-->
+    </div>
+    <!--tab end-->
 
 
     <div class="tab">
@@ -322,14 +392,30 @@ echo Dialog::widget();
 </div>
 
 <style>
-    img {
+  img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    }
-    #otherattribute-answer, #comment-answer, #feedback-customer_name, #feedback-email{
-      font-size: 18px;
-    }
+  }
+
+  #otherattribute-answer,
+  #comment-answer,
+  #feedback-customer_name,
+  #feedback-email {
+    font-size: 18px;
+  }
+
+  .checkboxgroup {
+    display: inline-block;
+    text-align: center;
+    margin-top: 5px;
+    width: 150px;
+  }
+
+  .checkboxgroup label {
+    display: block;
+    font-size: 1vw;
+  }
 </style>
 
 <?php
@@ -388,6 +474,21 @@ $(document).ready(function(){
     $("body").on("touchstart",".smiley5",function () {
       $(this).prop("checked", true);
     });
+    $("body").on("touchstart",".number1",function () {
+      $(this).prop("checked", true);
+    });
+    $("body").on("touchstart",".number2",function () {
+      $(this).prop("checked", true);
+    });
+    $("body").on("touchstart",".number3",function () {
+      $(this).prop("checked", true);
+    });
+    $("body").on("touchstart",".number4",function () {
+      $(this).prop("checked", true);
+    });
+    $("body").on("touchstart",".number5",function () {
+      $(this).prop("checked", true);
+    });
     $("body").on("touchstart","#comment-answer",function () {
       $(this).focus();
       $(".keyboard").removeClass("keyboard--hidden");
@@ -431,8 +532,10 @@ JS;
 $this->registerJs($js, \yii\web\View::POS_READY);
 ?>
 
+
 <script>
   var carousel = $('.carousel')
+
   function startCarousel() {
     carousel.owlCarousel({
       margin: 20,
@@ -456,7 +559,7 @@ $this->registerJs($js, \yii\web\View::POS_READY);
         if (tab1 > index1) {
           if ($(dr1 + index1 + dr2).length === 0) { //check if radio button is selected or checked
             carousel.trigger('prev.owl.carousel', [300]);
-           
+
           }
         } else if (tab3 > index1 && tab2 < index1) {
           var index2 = index - tab1;
@@ -464,15 +567,15 @@ $this->registerJs($js, \yii\web\View::POS_READY);
           if ($(ir1 + index2 + ir2).length === 0) { //check if radio button is selected or checked
             carousel.trigger('prev.owl.carousel', [300]);
             console.log(tab3 + ">" + index1 + "and" + tab2 + "<" + index1);
-       
+
           }
         } else if (tab3 == index1) {
           if ($('input[name="CustomerExperience[rating]"]:checked').length === 0) {
             carousel.trigger('prev.owl.carousel', [300]);
           }
-          console.log(tab3  + "==" + index1);
-         // console.log(index1);
-        }else if (tab3 < index) {
+          console.log(tab3 + "==" + index1);
+          // console.log(index1);
+        } else if (tab3 < index) {
           if ($(".rating-stars").attr("title") == "Not Rated") {
             carousel.trigger('prev.owl.carousel', [300]);
           }
@@ -508,8 +611,8 @@ $this->registerJs($js, \yii\web\View::POS_READY);
 
   jQuery(document).ready(function($) {
     startCarousel();
-    $("body").on("click","#btnOk", function(){
-      var agency_id = <?php echo $_GET['agency_id'];?>;
+    $("body").on("click", "#btnOk", function() {
+      var agency_id = <?php echo $_GET['agency_id']; ?>;
       var url = "../feedback/index?agency_id=" + agency_id;
       location.replace(url)
     });

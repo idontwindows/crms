@@ -1,8 +1,8 @@
 
     form#feedback-form input[type="radio"].smiley1 {
     -webkit-appearance: none;
-    width: 90px;
-    height: 90px;
+    width: 5vw;
+    height: 5vw;
     border: none;
     cursor: pointer;
     -webkit-transition: border .2s ease;
@@ -15,8 +15,8 @@
     }
     form#feedback-form input[type="radio"].smiley2 {
     -webkit-appearance: none;
-    width: 90px;
-    height: 90px;
+    width: 5vw;
+    height: 5vw;
     border: none;
     cursor: pointer;
     -webkit-transition: border .2s ease;
@@ -29,8 +29,8 @@
     }
     form#feedback-form input[type="radio"].smiley3 {
     -webkit-appearance: none;
-    width: 90px;
-    height: 90px;
+    width: 5vw;
+    height: 5vw;
     border: none;
     cursor: pointer;
     -webkit-transition: border .2s ease;
@@ -43,8 +43,8 @@
     }
     form#feedback-form input[type="radio"].smiley4 {
     -webkit-appearance: none;
-    width: 90px;
-    height: 90px;
+    width: 5vw;
+    height: 5vw;
     border: none;
     cursor: pointer;
     -webkit-transition: border .2s ease;
@@ -57,8 +57,8 @@
     }
     form#feedback-form input[type="radio"].smiley5 {
     -webkit-appearance: none;
-    width: 90px;
-    height: 90px;
+    width: 5vw;
+    height: 5vw;
     border: none;
     cursor: pointer;
     -webkit-transition: border .2s ease;
