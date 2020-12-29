@@ -19,6 +19,7 @@ use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\data\ArrayDataProvider;
 use common\models\User;
+use arturoliveira\ExcelView;
 
 /**
  * Default controller for the `Lab` module
@@ -265,12 +266,16 @@ class DefaultController extends Controller
          ***********************************/
 
         //$agencyprofile = Agencyprofile::find()->one();
-        
-        if(!Yii::$app->user->isGuest){
-            $CurrentUser = User::findOne(['user_id'=> Yii::$app->user->identity->user_id]);
-            $CurrentAgencyid = $CurrentUser->profile->agency_id;
+        $CurrentUser = User::findOne(['user_id'=> Yii::$app->user->identity->user_id]);
+
+        if(Yii::$app->user->can('super-admin')){
+            if(isset($_GET['region'])){
+                $CurrentAgencyid =  $_GET['region'];
+            }else{
+                $CurrentAgencyid = $CurrentUser->profile->agency_id;
+            }
         }else{
-            $CurrentAgencyid = 0;
+            $CurrentAgencyid = $CurrentUser->profile->agency_id;
         }
 
         $model = new Feedback();
@@ -614,8 +619,15 @@ class DefaultController extends Controller
         //$year = '2020';
         //$agencyid = '9';
 
-        if(!Yii::$app->user->isGuest){
-            $CurrentUser = User::findOne(['user_id'=> Yii::$app->user->identity->user_id]);
+        $CurrentUser = User::findOne(['user_id'=> Yii::$app->user->identity->user_id]);
+
+        if(Yii::$app->user->can('super-admin')){
+            if(isset($_GET['region'])){
+                $CurrentAgencyid =  $_GET['region'];
+            }else{
+                $CurrentAgencyid = $CurrentUser->profile->agency_id;
+            }
+        }else{
             $CurrentAgencyid = $CurrentUser->profile->agency_id;
         }
         //$promotion = Promotion::find();
@@ -651,4 +663,5 @@ class DefaultController extends Controller
         $npsArray = [$promoters,$detractors,$nps,$passive];
         return $npsArray;
     }
+
 }

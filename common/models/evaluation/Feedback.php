@@ -14,7 +14,7 @@ use Yii;
  */
 class Feedback extends \yii\db\ActiveRecord
 {
-    public $rating5,$rating4,$rating3,$rating2,$rating1,$month,$year;
+    public $rating5,$rating4,$rating3,$rating2,$rating1,$month,$year,$region;
     /**
      * @inheritdoc
      */
@@ -29,7 +29,7 @@ class Feedback extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['agency_id', 'business_unit_id', 'feedback_date','month','year'], 'required'],
+            [['agency_id','region', 'business_unit_id', 'feedback_date','month','year'], 'required'],
             [['agency_id', 'business_unit_id'], 'integer'],
             [['customer_name', 'email'], 'string', 'max' => 200],
             [['feedback_date'], 'safe'],

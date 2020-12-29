@@ -18,14 +18,14 @@ use common\models\evaluation\Businessunit;
       'action' => 'dashboard',
       'method' => 'get'
     ]); ?>
-    <div class="col-lg-3 col-6">
+    <div class="col-lg-2 col-6">
       <?= $form->field($model, 'business_unit_id')
         ->dropDownList(
           ArrayHelper::map(Businessunit::find()->asArray()->all(), 'business_unit_id', 'name'),           // Flat array ('id'=>'label')
           ['prompt' => 'Select Unit', 'id' => 'listBusiness', 'name' => 'id']    // options
         )->label(false); ?>
     </div>
-    <div class="col-lg-3 col-6">
+    <div class="col-lg-2 col-6">
       <?= $form->field($model, 'month')
         ->dropDownList(
           [
@@ -45,17 +45,23 @@ use common\models\evaluation\Businessunit;
           ['prompt' => 'Select Month', 'id' => 'listMonth', 'name' => 'month']    // options
         )->label(false); ?>
     </div>
-    <div class="col-lg-3 col-6">
+    <div class="col-lg-2 col-6">
       <?= $form->field($model, 'year')
         ->dropDownList(
-          [
-            2020 => 2020,
-            2021 => 2021
-          ],           // Flat array ('id'=>'label')
+          ArrayHelper::map(Feedback::find()->select('YEAR(feedback_date) as year')->asArray()->all(), 'year', 'year'),          // Flat array ('id'=>'label')
           ['prompt' => 'Select Year', 'id' => 'listYear', 'name' => 'year']    // options
         )->label(false); ?>
     </div>
-    <div class="col-lg-3 col-6">
+    <?php if(Yii::$app->user->can('super-admin')){?>
+    <div class="col-lg-2 col-6">
+      <?= $form->field($model, 'region')
+        ->dropDownList(
+          ArrayHelper::map(Agency::find()->orderBy(['region_code' => SORT_ASC])->asArray()->all(), 'agency_id', 'region_code'),          // Flat array ('id'=>'label')
+          ['prompt' => 'Select Region', 'id' => 'listRegion', 'name' => 'region']    // options
+        )->label(false); ?>
+    </div>
+    <?php }?>
+    <div class="col-lg-2 col-6">
       <?= Html::submitButton('Apply', ['id' => 'btnApply', 'class' => 'btn btn-success btn-sm', 'style' => 'float: left; width: 100px; height:33px']) ?>
     </div>
 
@@ -255,6 +261,7 @@ use common\models\evaluation\Businessunit;
   document.getElementById('listBusiness').value = "<?php echo isset($_GET['id']) ? $_GET['id'] : ''; ?>"
   document.getElementById('listMonth').value = "<?php echo isset($_GET['month']) ? $_GET['month'] : ''; ?>"
   document.getElementById('listYear').value = "<?php echo isset($_GET['year']) ? $_GET['year'] : ''; ?>"
+  document.getElementById('listRegion').value = "<?php echo isset($_GET['region']) ? $_GET['region'] : ''; ?>"
   jQuery(document).ready(function($) {
     $("#box-footer-respondents").click(function() {
       $("#link-respondents")[0].click();

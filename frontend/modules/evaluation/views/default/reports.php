@@ -3,6 +3,7 @@
 use common\models\evaluation\Feedback;
 use kartik\grid\GridView;
 use yii\helpers\Json;
+use yii\helpers\Url;
 ?>
 <?php
 //$totalresponse = $feedback->select(['count(*) as totalresponse'])->where(['month(feedback_date)' => $_GET['month'],'year(feedback_date)' => $_GET['year'],'business_unit_id' => $_GET['id']])->asArray()->one();
@@ -10,7 +11,7 @@ use yii\helpers\Json;
 <div class="panel panel-primary">
     <div class="panel-heading clearfix">
         <div class="btn-group pull-right">
-        <button class="btn-print"><i class="fa fa-print"></i></button>
+        <a class="btn-print" href=#><i class="fa fa-print"></i></a>
         </div>
     </div>
     <div class="panel-body">
@@ -191,10 +192,12 @@ use yii\helpers\Json;
   color: white;
   cursor: pointer;
   font-size: 20px;
+  width: 100px;
+  height: 100px;
 }
 
 /* Darker background on mouse-over */
 .btn-print:hover {
-  background-color: #0345fc;
+  background-color: #22547a;
 }
 </style>
