@@ -16,6 +16,7 @@ use kartik\dialog\Dialog;
 
 echo Dialog::widget();
 ?>
+  <script src="/js/evaluation/owl.carousel.js"></script>
 
 <?php $form = ActiveForm::begin([
   'id' => 'feedback-form',
