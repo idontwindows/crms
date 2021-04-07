@@ -29,7 +29,9 @@
         "kartik-v/yii2-money": "dev-master",
         "kartik-v/yii2-icons": "@dev",
         "yii2mod/yii2-sweet-alert": "*",
-        "mdmsoft/yii2-admin": "*"
+        "mdmsoft/yii2-admin": "*",
+        "arturoliveira/yii2-excelview": "*",
+        "kartik-v/yii2-export": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
