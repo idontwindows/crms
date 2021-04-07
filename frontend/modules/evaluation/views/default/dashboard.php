@@ -46,7 +46,7 @@ $Units = [
           [
             1 => 'January',
             2 => 'February',
-            3 => 'Mrach',
+            3 => 'March',
             4 => 'April',
             5 => 'May',
             6 => 'June',
@@ -276,7 +276,9 @@ $Units = [
   document.getElementById('listBusiness').value = "<?php echo isset($_GET['id']) ? $_GET['id'] : ''; ?>"
   document.getElementById('listMonth').value = "<?php echo isset($_GET['month']) ? $_GET['month'] : ''; ?>"
   document.getElementById('listYear').value = "<?php echo isset($_GET['year']) ? $_GET['year'] : ''; ?>"
-  document.getElementById('listRegion').value = "<?php echo isset($_GET['region']) ? $_GET['region'] : ''; ?>"
+  if($('#listRegion').length != 0){
+    document.getElementById('listRegion').value = "<?php echo isset($_GET['region']) ? $_GET['region'] : ''; ?>"
+  }
   jQuery(document).ready(function($) {
     $("#box-footer-respondents").click(function() {
       $("#link-respondents")[0].click();
