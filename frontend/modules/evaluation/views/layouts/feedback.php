@@ -26,11 +26,11 @@ FeedbackAsset::register($this);
     <link rel="stylesheet" href="/css/owl.carousel.min.css">
     
     <script src="/js/evaluation/signature_pad.min.js"></script>
-    <script src="/js/evaluation/jquery.min.js"></script>
+
     <script src="/js/evaluation/jquery-3.2.1.slim.min.js"></script>
     <script src="/js/evaluation/popper.min.js"></script>
     <script src="/js/evaluation/bootstrap.min.js"></script>
-    <script src="/js/evaluation/owl.carousel.js"></script>
+  
     
     <?php $this->head() ?>
 </head>
