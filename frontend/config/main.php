@@ -41,6 +41,15 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'assetManager' => [
+            'bundles' => [
+                //yii\bootstrap\BootstrapAsset::class => false,
+                'yii\web\JqueryAsset' => [
+                    'jsOptions' => ['position' => \yii\web\View::POS_HEAD],
+                    //'js'=>[]
+                ],
+            ],
+        ],
         'urlManager' => [
             'class' => 'yii\web\UrlManager',
             // Disable index.php
