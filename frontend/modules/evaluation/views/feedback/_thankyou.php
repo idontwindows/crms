@@ -5,10 +5,11 @@
   <p class="lead">
     <button id="btnOk" class="btn btn-primary btn-lg">OK</button>
   </p>
+</div>
 
-  <style>
-    #btnOk {
-      border-radius: 25px;
-      width: 50%;
-    }
-  </style>
+<style>
+  #btnOk {
+    border-radius: 25px;
+    width: 50%;
+  }
+</style>
