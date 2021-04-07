@@ -9,6 +9,21 @@ use kartik\select2\Select2;
 use kartik\widgets\ActiveForm;
 use common\models\evaluation\Agency;
 use common\models\evaluation\Businessunit;
+
+$Units = [
+  0 => 'all',
+  20 => 'Accounting and Budgeting',
+  30 => 'Cashiering',
+  40 => 'Purchasing',
+  50 => 'Human Resources',
+  60 => 'Maintenance',
+  70 => 'Science and Technology Information Services',
+  80 => 'Science and Technology Scholarship',
+  90 => 'Innovation System Support',
+  100 => 'Science and Technology Intervention',
+];
+
+
 ?>
 <section class="content-header">
   <h1 style="font-weight:bold; font-size:40px">Dashboard</h1>
@@ -21,7 +36,7 @@ use common\models\evaluation\Businessunit;
     <div class="col-lg-2 col-6">
       <?= $form->field($model, 'business_unit_id')
         ->dropDownList(
-          ArrayHelper::map(Businessunit::find()->asArray()->all(), 'business_unit_id', 'name'),           // Flat array ('id'=>'label')
+          $Units,           // Flat array ('id'=>'label')
           ['prompt' => 'Select Unit', 'id' => 'listBusiness', 'name' => 'id']    // options
         )->label(false); ?>
     </div>
