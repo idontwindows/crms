@@ -25,7 +25,7 @@ echo Dialog::widget();
   //'validationUrl' => 'validation-rul',
 ]); ?>
 
-
+<div class="wrapper">
   <div class="carousel owl-carousel">
     <?php //echo Html::button($rating_1) 
     ?>
@@ -81,6 +81,7 @@ echo Dialog::widget();
                     <label for="my_radio_button_id5">Outstanding</br></br></label>
                   </div>
                 </div>
+
                 <!--row begin-->
                 <!--look for smiley.css at frontend/web/css -->
                 <!--
@@ -98,6 +99,16 @@ echo Dialog::widget();
           <!--panel body begin-->
         </div>
         <!--panel end-->
+      </div>
+      <!--tab end-->
+      <?php $k++; ?>
+    <?php } ?>
+
+
+    <?php $i = 0; ?>
+    <?php foreach ($evaluationAttributes as $attribute) { ?>
+      <div class="tab">
+        <!--tab begin-->
         <div class="panel panel-info">
           <!--panel begin-->
           <div class="panel-heading"><b>Importance of the Attributes <span style="color:red">(Required)</span></b></div>
@@ -105,7 +116,7 @@ echo Dialog::widget();
             <!--panel body begin-->
             <div class="form-group">
               <?php $modelImportancerating->evaluation_attribute_id = $attribute->evaluation_attribute_id; ?>
-              <?= $form->field($modelImportancerating, "[$k]evaluation_attribute_id")->hiddenInput()->label(false); ?>
+              <?= $form->field($modelImportancerating, "[$i]evaluation_attribute_id")->hiddenInput()->label(false); ?>
             </div>
             <div class="form-group">
               <div class="d-flex align-items-center justify-content-center">
@@ -121,21 +132,31 @@ echo Dialog::widget();
 
                 <div id="checkboxes">
                   <div class="checkboxgroup">
-                    <input type="radio" class='number1' name=<?= 'Importancerating[' . $k . '][rating]' ?> id="my_radio_button_id1" value="1" />
+                    <input type="radio" class='number1' name=<?= 'Importancerating[' . $i . '][rating]' ?> id="my_radio_button_id1" value="1" />
                   </div>
                   <div class="checkboxgroup">
-                    <input type="radio" class='number2' name=<?= 'Importancerating[' . $k . '][rating]' ?> id="my_radio_button_id2" value="2" />
+                    <input type="radio" class='number2' name=<?= 'Importancerating[' . $i . '][rating]' ?> id="my_radio_button_id2" value="2" />
                   </div>
                   <div class="checkboxgroup">
-                    <input type="radio" class='number3' name=<?= 'Importancerating[' . $k . '][rating]' ?> id="my_radio_button_id3" value="3" /> 
+                    <input type="radio" class='number3' name=<?= 'Importancerating[' . $i . '][rating]' ?> id="my_radio_button_id3" value="3" /> 
                   </div>
                   <div class="checkboxgroup">
-                    <input type="radio" class='number4' name=<?= 'Importancerating[' . $k . '][rating]' ?> id="my_radio_button_id4" value="4" />                
+                    <input type="radio" class='number4' name=<?= 'Importancerating[' . $i . '][rating]' ?> id="my_radio_button_id4" value="4" />                
                   </div>
                   <div class="checkboxgroup">
-                    <input type="radio" class='number5' name=<?= 'Importancerating[' . $k . '][rating]' ?> id="my_radio_button_id5" value="5" />
+                    <input type="radio" class='number5' name=<?= 'Importancerating[' . $i . '][rating]' ?> id="my_radio_button_id5" value="5" />
                   </div>
                 </div>
+
+                <!--row begin-->
+                <!--look for smiley.css at frontend/web/css -->
+                <!--
+                <div class="col-md-2"><?= $form->field($modelImportancerating, "[$i]rating")->radio(['value' => 1, 'class' => 'number1', 'uncheck' => null,])->label(false) ?></div>
+                <div class="col-md-2"><?= $form->field($modelImportancerating, "[$i]rating")->radio(['value' => 2, 'class' => 'number2', 'uncheck' => null,])->label(false) ?></div>
+                <div class="col-md-2"><?= $form->field($modelImportancerating, "[$i]rating")->radio(['value' => 3, 'class' => 'number3', 'uncheck' => null,])->label(false) ?></div>
+                <div class="col-md-2"><?= $form->field($modelImportancerating, "[$i]rating")->radio(['value' => 4, 'class' => 'number4', 'uncheck' => null,])->label(false) ?></div>
+                <div class="col-md-2"><?= $form->field($modelImportancerating, "[$i]rating")->radio(['value' => 5, 'class' => 'number5', 'uncheck' => null,])->label(false) ?></div>
+                -->
               </div>
               <!--row end-->
             </div>
@@ -143,10 +164,13 @@ echo Dialog::widget();
           </div>
           <!--panel body end-->
         </div>
+        <!--panel end-->
       </div>
       <!--tab end-->
-      <?php $k++; ?>
+      <?php $i++; ?>
     <?php } ?>
+
+
 
     <div class="tab">
       <!--tab begin-->
@@ -520,7 +544,7 @@ $this->registerJs($js, \yii\web\View::POS_READY);
       autoplay: false,
       //autoplayTimeout: 2000,
       //autoplayHoverPause: true,
-      /*onChanged: function(e) {
+      onChanged: function(e) {
         var tab = $(".tab").length;
         var index = e.item.index;
         var dr1 = 'input[name="Deliveryrating[';
@@ -561,7 +585,7 @@ $this->registerJs($js, \yii\web\View::POS_READY);
 
         $(".keyboard").addClass("keyboard--hidden");
         //console.log(index);
-      },*/
+      },
       onTranslated: function(e) {
 
         console.log('transtale success');
