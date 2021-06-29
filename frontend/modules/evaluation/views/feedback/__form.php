@@ -153,7 +153,7 @@ echo Dialog::widget();
       <div class="panel panel-info">
         <!--panel begin-->
         <div class="panel-heading"><b>OVER-ALL CUSTOMER EXPERIENCE <span style="color:red">(Required)</span></b></div>
-        <div class="panel-body" style="max-height: 1000px; height: 200px;">
+        <div class="panel-body" style="max-height: 1000px; height: 300px;">
           <!--panel body begin-->
           <div class="form-group">
             <div class="d-flex align-items-center justify-content-center">
@@ -214,8 +214,8 @@ echo Dialog::widget();
       <!--tab begin-->
       <div class="panel panel-info">
         <!--panel begin-->
-        <div class="panel-heading">Net Promoter<span style="color:red">(Required)</span></div>
-        <div class="panel-body">
+        <div class="panel-heading"><b>Net Promoter<span style="color:red">(Required)</span></b></div>
+        <div class="panel-body" style="height: 350px;">
         <b>Considering your complete experience with our agency, how likely would you recommend our services to others?</b>
           <div class="d-flex align-items-center justify-content-center">
             <!--panel body begin-->
@@ -236,9 +236,9 @@ echo Dialog::widget();
       <div class="panel panel-info">
         <!--panel begin-->
         <div class="panel-heading"><b>Please give us your comments and/or suggestions to improve our services. (Optional)</b></div>
-        <div class="panel-body" style="max-height: 200px; height: 200px;">
+        <div class="panel-body" style="max-height: 1000px;">
           <!--panel body begin-->
-          <?= $form->field($modelComment, 'answer')->textArea(['class' => 'use-keyboard-input', 'style' => 'height:130px'])->label('') ?>
+          <?= $form->field($modelComment, 'answer')->textArea(['style' => 'height:300px'])->label('') ?>
         </div>
         <!--panel body end-->
       </div>
@@ -251,9 +251,9 @@ echo Dialog::widget();
       <div class="panel panel-info">
         <!--panel begin-->
         <div class="panel-heading"><b>What other Attributes deemed appropriate for the Business Unit. (Optional)</b></div>
-        <div class="panel-body" style="max-height: 200px; height: 200px;">
+        <div class="panel-body" style="max-height: 1000px;">
           <!--panel body begin-->
-          <?= $form->field($modelOtherattribute, 'answer')->textArea(['class' => 'use-keyboard-input', 'style' => 'height:130px'])->label('') ?>
+          <?= $form->field($modelOtherattribute, 'answer')->textArea(['style' => 'height:300px'])->label('') ?>
         </div>
         <!--panel body end-->
       </div>
@@ -266,12 +266,12 @@ echo Dialog::widget();
       <div class="panel panel-info">
         <!--panel begin-->
         <div class="panel-heading "><b>Customer Information (Optional)</b></div>
-        <div class="panel-body">
+        <div class="panel-body" style="height: 350px;">
           <!--panel body begin-->
           <?= $form->field($model, 'agency_id')->hiddenInput()->label(false); ?>
           <?= $form->field($model, 'business_unit_id')->hiddenInput()->label(false) ?>
-          <?= $form->field($model, 'customer_name')->textInput(['class' => 'use-keyboard-input']) ?>
-          <?= $form->field($model, 'email')->textInput(['class' => 'use-keyboard-input']) ?>
+          <?= $form->field($model, 'customer_name')->textInput() ?>
+          <?= $form->field($model, 'email')->textInput() ?>
           <?= $form->field($model, 'feedback_date')->hiddenInput()->label(false) ?>
         </div>
         <!--panel body end-->
@@ -285,7 +285,7 @@ echo Dialog::widget();
       <div class="panel panel-info">
         <!--panel begin-->
         <div class="panel-heading"><b>Signature <span style="color:red">(Required)</span></b></div>
-        <div class="panel-body" style="max-height: 1000px; height: 150px;">
+        <div class="panel-body" style="max-height: 1000px;">
           <!--panel body begin-->
           <div class="row">
             <!--row begin-->
@@ -296,8 +296,8 @@ echo Dialog::widget();
               <!--
               <canvas id="signature" class="border border-secondary rounded" width=400px height=100px ></canvas>
               -->
-              <div class="border border-secondary rounded" style="height:100px; margin-bottom:10px">
-                <img src="/images/tap.png" alt="" id="signature" height=90px style="width:40%" value=<?php echo Url::to(['signatureform']); ?> title="Signature">
+              <div class="border border-secondary rounded" style="height:250px; margin-bottom:10px">
+                <img src="/images/tap.png" alt="" id="signature" height=90% style="width:40%" value=<?php echo Url::to(['signatureform']); ?> title="Signature">
                 <!--
               <div><button type="button" class="btn btn-primary btn-lg" id="clear-signature">Clear</button></div>
               -->
@@ -416,9 +416,14 @@ $(document).ready(function(){
                 type: "POST",
                 url: url,
                 data: form.serialize(), // serializes the form's elements.
+                datatype: 'json',
                 success: function(data)
                 {
                   $('#modalTY').modal('show');
+                  //alert(data);
+                },
+                error:function(data){
+                  alert('Please check all required attributes...');
                 }
               });
           }else{
@@ -466,7 +471,7 @@ $(document).ready(function(){
     $("body").on("touchstart",".number5",function () {
       $(this).prop("checked", true);
     });
-    $("body").on("touchstart","#comment-answer",function () {
+    /*$("body").on("touchstart","#comment-answer",function () {
       $(this).focus();
       $(".keyboard").removeClass("keyboard--hidden");
     });
@@ -481,16 +486,16 @@ $(document).ready(function(){
     $("body").on("touchstart","#feedback-email",function () {
       $(this).focus();
       $(".keyboard").removeClass("keyboard--hidden");
-    });
+    });*/
     /*
     $("body").on("touchstart","#btnSubmit",function () {
         submitfrom();
     });*/
-    $("#btnSubmit").on('touchstart', function (event) {  
+    /*$("#btnSubmit").on('touchstart', function (event) {  
           event.preventDefault();
           $(this).submit()
           $(this).prop('disabled', true);
-     });
+     });*/
     $("body").on("touchend","#signature",function () {
         $('#modal').modal('show');
     });
@@ -520,7 +525,7 @@ $this->registerJs($js, \yii\web\View::POS_READY);
       autoplay: false,
       //autoplayTimeout: 2000,
       //autoplayHoverPause: true,
-      /*onChanged: function(e) {
+      onChanged: function(e) {
         var tab = $(".tab").length;
         var index = e.item.index;
         var dr1 = 'input[name="Deliveryrating[';
@@ -530,15 +535,14 @@ $this->registerJs($js, \yii\web\View::POS_READY);
         var tab1 = tab - 6;
         var index1 = index - 1;
         var tab3 = tab1;
-        tab1 = tab1 / 2;
+        //tab1 = tab1 / 2;
         var tab2 = tab1 - 1;
-
+        console.log(tab);
         if (tab1 > index1) {
-          if ($(dr1 + index1 + dr2).length === 0) { //check if radio button is selected or checked
+          if ($(dr1 + index1 + dr2).length === 0 || $(ir1 + index1 + ir2).length === 0) { //check if radio button is selected or checked
             carousel.trigger('prev.owl.carousel', [300]);
-
           }
-        } else if (tab3 > index1 && tab2 < index1) {
+        } /*else if (tab3 > index1 && tab2 < index1) {
           var index2 = index - tab1;
           index2 = index2 - 1;
           if ($(ir1 + index2 + ir2).length === 0) { //check if radio button is selected or checked
@@ -546,7 +550,7 @@ $this->registerJs($js, \yii\web\View::POS_READY);
             console.log(tab3 + ">" + index1 + "and" + tab2 + "<" + index1);
 
           }
-        } else if (tab3 == index1) {
+        }*/ else if (tab3 == index1) {
           if ($('input[name="CustomerExperience[rating]"]:checked').length === 0) {
             carousel.trigger('prev.owl.carousel', [300]);
           }
@@ -561,7 +565,7 @@ $this->registerJs($js, \yii\web\View::POS_READY);
 
         $(".keyboard").addClass("keyboard--hidden");
         //console.log(index);
-      },*/
+      },
       onTranslated: function(e) {
 
         console.log('transtale success');
