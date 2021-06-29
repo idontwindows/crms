@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\evaluation\Feedback */
 
-$this->title = 'New Feedback';
+$this->title = 'New Feedbacks';
 $this->params['breadcrumbs'][] = ['label' => 'Feedbacks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
