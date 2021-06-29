@@ -176,7 +176,7 @@ $Units = [
         <!-- /.box-header -->
         <div class="box-body" style="">
           <!-- bar chart canvas element -->
-          <canvas id="income" width="550" height="370"></canvas>
+          <canvas id="barChart" width="550" height="370"></canvas>
         </div>
       </div>
     </div>
@@ -201,7 +201,7 @@ $Units = [
           <div style="background-color:#FF8153; width:25px; height:25px"></div><div>Passives</div>
           </div>
           <div class="col-lg-10 col-6">
-          <canvas id="countries" width=370 height=370></canvas>
+          <canvas id="pieChart" width=370 height=370></canvas>
           </div>
           </div>
         </div>
@@ -220,15 +220,15 @@ $Units = [
 
 <script>
   var updatebarChart = function(){
-    var income = document.getElementById("income").getContext("2d");
+    var barChart = document.getElementById("barChart").getContext("2d");
     // draw bar chart
-    new Chart(income).Bar(barData);
+    new Chart(barChart).Bar(barData);
   }
   var updatepieChart = function(){
       // get pie chart canvas
-    var countries = document.getElementById("countries").getContext("2d");
+    var pieChart = document.getElementById("pieChart").getContext("2d");
     // draw pie chart
-    new Chart(countries).Pie(pieData, pieOptions);
+    new Chart(pieChart).Pie(pieData, pieOptions);
     // bar chart data
   }
   // pie chart data
