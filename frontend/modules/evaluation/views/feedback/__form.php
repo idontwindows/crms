@@ -238,12 +238,14 @@ echo Dialog::widget();
       <!--tab begin-->
       <div class="panel panel-info">
         <!--panel begin-->
-        <div class="panel-heading"><b>Considering your complete experience with our agency, how likely would you recommend our services to others? <span style="color:red">(Required)</span></b></div>
+        <div class="panel-heading">Net Promoter<span style="color:red">(Required)</span></div>
         <div class="panel-body">
+        <b>Considering your complete experience with our agency, how likely would you recommend our services to others?</b>
           <div class="d-flex align-items-center justify-content-center">
             <!--panel body begin-->
             <?php //$form->field($modelPromotion, 'rating')->radioList($ratingPromotion, ['inline'=>true])->label(false) 
             ?>
+            
             <?= $form->field($modelPromotion, 'rating')->textInput(['id' => 'input-21c'])->label(false) ?>
           </div>
         </div>
@@ -411,6 +413,9 @@ echo Dialog::widget();
   .checkboxgroup label {
     display: block;
     font-size: 1vw;
+  }
+  #checkboxes{
+    margin-top: 0px;
   }
 </style>
 
