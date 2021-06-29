@@ -11,6 +11,8 @@ use common\models\evaluation\Importancerating;
 use common\models\evaluation\Promotion;
 use common\models\evaluation\CustomerExperience;
 use common\models\evaluation\Agencyprofile;
+use common\models\evaluation\VwEvaluationRating;
+use frontend\models\evaluationreport;
 
 use yii\web\Controller;
 use Yii;
@@ -259,8 +261,7 @@ class DefaultController extends Controller
         /***********************************
          * AUTHOR: EDUARDO R. ZARAGOZA JR. *
          * DATE CREATED: DEC 01, 2020      *
-         * DOST Regional Office IX         *
-         *  ---EL PASIL NO ASE DIPISIL---  *                         
+         * DOST Regional Office IX         *                         
          ***********************************/
 
         //$agencyprofile = Agencyprofile::find()->one();
@@ -688,5 +689,12 @@ class DefaultController extends Controller
         }
         $npsArray = [$promoters, $detractors, $nps, $passive];
         return $npsArray;
+    }
+    public function actionReport2(){  
+        $exporter = new evaluationreport();
+        //if(Yii::$app->request->isAjax){
+        $exporter->loaddoc();
+        ob_end_clean();
+        $exporter->save('./report/report.xls');
     }
 }
